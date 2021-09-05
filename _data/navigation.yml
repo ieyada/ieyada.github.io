@@ -11,10 +11,10 @@ main:
   #  url: /portfolio/
 
   - title: "Data"
-    url: /data_sets/
+    url: /datasets/
 
   - title: "Working Papers"
-    url: /working_papers/
+    url: /workingpapers/
   
   - title: "Teaching"
     url: /teaching/

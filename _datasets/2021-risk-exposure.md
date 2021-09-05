@@ -1,8 +1,8 @@
 ---
 title: "Risk Exposure Measures"
-collection: data_sets
+collection: datasets
 type: "A Dataset"
-permalink: /data_sets/2021-risk-exposure
+permalink: /datasets/2021-risk-exposure
 venue: "University 1, Department"
 date: 2021-01-01
 location: "City, Country"

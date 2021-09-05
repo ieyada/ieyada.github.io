@@ -213,10 +213,10 @@ defaults:
     values:
       layout: single
       author_profile: true
-  # _data_sets
+  # _datasets
   - scope:
       path: ""
-      type: data_sets
+      type: datasets
     values:
       layout: single
       author_profile: true
@@ -231,10 +231,10 @@ defaults:
       author_profile: true
       share: true
       comments: true
-  # _working_papers
+  # _workingpapers
   - scope:
       path: ""
-      type: working_papers
+      type: workingpapers
     values:
       layout: single
       author_profile: true
