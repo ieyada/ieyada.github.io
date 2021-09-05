@@ -23,7 +23,7 @@ main:
     url: /teaching/
 
   - title: "CV"
-    url: /cv/  
+    url: "https://ieyada.github.io/files/Official_cv.pdf"  
   
   - title: "Blog"
     # url: /year-archive/
