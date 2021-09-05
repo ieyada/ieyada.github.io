@@ -5,7 +5,7 @@
 # For technical reasons, this file is *NOT* reloaded automatically when you use
 # `jekyll serve`. If you change this file, please restart the server process.
 
-minimal_mistakes_skin    : "air" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum" "sunrise"
+minimal_mistakes_skin    : "dark" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum" "sunrise"
 # Site Settings
 locale                   : "en-UK"
 title                    : "Home"
@@ -88,6 +88,7 @@ author:
   employer         :
   googlescholar    : "https://scholar.google.com/citations?user=w-Wdm7gAAAAJ&hl=en"
   email            : "ieyada@live.com"
+  researchgate     : "https://www.researchgate.net/profile/Eyad-Alhudhaif"
   uri              : 
   bitbucket        :
   codepen          :
@@ -100,7 +101,7 @@ author:
   keybase          :
   instagram        :
   lastfm           :
-  linkedin         : "https://www.linkedin.com/in/eyad-alhudhaif-a22a0538/"
+  linkedin         : "Eyad-alhudhaif"
   orcid            : 
   pinterest        :
   soundcloud       :

@@ -1,7 +1,5 @@
 # main links links
 main:
-  - title: "Publications"
-    url: /publications/
 
   #- title: "Talks"
   #  url: /talks/    
@@ -11,13 +9,23 @@ main:
     
   #- title: "Portfolio"
   #  url: /portfolio/
-        
+
+  - title: "Data"
+    url: /data_sets/
+
+  - title: "Working Papers"
+    url: /working_papers/
+  
+  - title: "Teaching"
+    url: /teaching/
+
+  - title: "CV"
+    url: /cv/   
+  
   - title: "Blog"
     # url: /year-archive/
-    url: "https://medium.com/@anebz"
-    
-  #- title: "CV"
-  #  url: /cv/
+    #url: "https://medium.com/@anebz"
+  
     
   #- title: "Guide"
   #  url: /markdown/
