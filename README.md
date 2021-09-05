@@ -1,0 +1,4 @@
+My personal academic website, forked from the [Minimal Mistakes Jekyll Theme](https://mmistakes.github.io/minimal-mistakes/), which is © 2016 Michael Rose and released under the MIT License. See LICENSE.md.
+
+### Enhancements
+I found this [issue](https://github.com/academicpages/academicpages.github.io/issues/137) in the [*academicpages*](https://github.com/academicpages/academicpages.github.io) repository about a change in the skin. Being the dark-mode lover that I am, I eagerly tried it, but it seems the format is \*slightly\* changed. I went to light mode for now and I'll continue to use the *Dark Reader* extension until something more stable is available.
