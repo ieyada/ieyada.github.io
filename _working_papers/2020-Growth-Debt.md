@@ -1,6 +1,6 @@
 ---
 title: "Growth Prospects and Debt Maturity"
-collection: working papers
+collection: working_papers
 permalink: /working_papers/2020-Growth-Debt
 date: 2021-05-07
 venue: 'NA'

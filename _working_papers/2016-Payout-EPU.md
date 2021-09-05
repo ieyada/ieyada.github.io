@@ -1,6 +1,6 @@
 ---
 title: "EPU and Payout Policy"
-collection: working papers
+collection: working_papers
 permalink: /working_papers/2016-Payout-EPU
 date: 2016-10-07
 venue: 'NA'

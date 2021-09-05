@@ -5,7 +5,7 @@
 # For technical reasons, this file is *NOT* reloaded automatically when you use
 # `jekyll serve`. If you change this file, please restart the server process.
 
-minimal_mistakes_skin    : "dark" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum" "sunrise"
+minimal_mistakes_skin    : "sunrise" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum" "sunrise"
 # Site Settings
 locale                   : "en-UK"
 title                    : "Home"
@@ -173,6 +173,12 @@ kramdown:
 
 # Collections
 collections:
+  data_sets:
+    output: true
+    permalink: /:collection/:path/
+  working_papers:
+    output: true
+    permalink: /:collection/:path/
   teaching:
     output: true
     permalink: /:collection/:path/
@@ -207,10 +213,28 @@ defaults:
     values:
       layout: single
       author_profile: true
+  # _data_sets
+  - scope:
+      path: ""
+      type: data_sets
+    values:
+      layout: single
+      author_profile: true
+      share: true
+      comments: true
   # _teaching
   - scope:
       path: ""
       type: teaching
+    values:
+      layout: single
+      author_profile: true
+      share: true
+      comments: true
+  # _working_papers
+  - scope:
+      path: ""
+      type: working_papers
     values:
       layout: single
       author_profile: true

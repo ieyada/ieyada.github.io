@@ -1,6 +1,6 @@
 ---
 title: "Risk Exposure Measures"
-collection: Data
+collection: data_sets
 type: "A Dataset"
 permalink: /data_sets/2021-risk-exposure
 venue: "University 1, Department"
