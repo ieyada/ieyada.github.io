@@ -173,10 +173,10 @@ kramdown:
 
 # Collections
 collections:
-  data_sets:
+  datasets:
     output: true
     permalink: /:collection/:path/
-  working_papers:
+  workingpapers:
     output: true
     permalink: /:collection/:path/
   teaching:

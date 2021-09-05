@@ -15,7 +15,10 @@ main:
 
   - title: "Working Papers"
     url: /workingpapers/
-  
+
+  - title: "Publications"
+    url: /publications/
+    
   - title: "Teaching"
     url: /teaching/
 
