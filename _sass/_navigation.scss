@@ -257,7 +257,7 @@
     padding: 5px;
     border: 1px solid $border-color;
     border-radius: $border-radius;
-    background: $body-color;
+    background: $primary-color;
     box-shadow: 0 0 10px rgba(#000, 0.25);
 
     a {
@@ -267,7 +267,7 @@
 
       &:hover {
         color: $masthead-link-color-hover;
-        background: mix(#fff, $body-color, 30%);
+        background: mix(#000, $body-color, 40%);
       }
     }
 
