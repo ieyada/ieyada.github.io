@@ -23,7 +23,7 @@ main:
     url: /teaching/
 
   - title: "CV"
-    url: /files/official_cv.pdf   
+    url: /cv/  
   
   - title: "Blog"
     # url: /year-archive/
