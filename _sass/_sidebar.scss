@@ -163,7 +163,7 @@
   list-style-type: none;
   border: 1px solid $border-color;
   border-radius: $border-radius;
-  background: #5B6780;
+  background: mix(#000, $body-color, 40%);
   z-index: -1;
   box-shadow: 0 0 10px rgba(#000, 0.25);
   cursor: default;
@@ -204,7 +204,7 @@
     width: 0;
     border-style: solid;
     border-width: 0 10px 10px;
-    border-color:#5B6780 transparent;
+    border-color: mix(#000, $body-color, 40%); transparent;
     z-index: 1;
 
     @include breakpoint($large) {
