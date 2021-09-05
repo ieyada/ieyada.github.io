@@ -196,7 +196,7 @@
     padding: 0 0.5rem;
     border: 0;
     outline: none;
-    background-color: $body-color;
+    background-color: mix(#000, $body-color, 25%);
     color: #000;
     cursor: pointer;
   }
