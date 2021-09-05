@@ -7,4 +7,4 @@ redirect_from:
   - /resume
 ---
 
-The CV can be downloaded from [here.](https://ieyada.github.io/files/official_cv.pdf) 
+The CV can be downloaded from [here.](http://ieyada.github.io/files/Official_cv.pdf) 
