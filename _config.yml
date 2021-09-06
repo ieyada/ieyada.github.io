@@ -7,7 +7,6 @@
 
 minimal_mistakes_skin    : "sunrise" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum" "sunrise"
 # Site Settings
-logo:                    : "images/mstile-70x70.png"
 locale                   : "en-UK"
 title                    : "Home"
 title_separator          : "-"
