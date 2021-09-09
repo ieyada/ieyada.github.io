@@ -1,10 +1,10 @@
 ---
-title: "Growth Prospects and Debt Maturity"
+title: "The Asymmetry Between Growth Opportunities and Debt Maturity Structure"
 collection: workingpapers
-permalink: /workingpapers/2020-Growth-Debt
+permalink: /workingpaper/2020-Growth-Debt
 date: 2021-05-07
 venue: 'NA'
-paperurl: 'A link'
-citation: 'Disch, Sascha; van de Par, Steven; Niedermeier, Andreas; Burdiel Pérez, Elena; Berasategui Ceberio, Ane; Edler, Bernd. (2018). &quot;Improved psychoacoustic model for efficient perceptual audio codecs.&quot; <i>AES - New York</i>.'
+paperurl: 'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3906487'
+citation: 'Alhudhaif, Eyad. (2021). &quot;The Asymmetry Between Growth Opportunities and Debt Maturity Structure.&quot; <i>Working Paper</i>.'
 ---
-Here you write a discription.
+Using the recent public health pandemic (COVID-19) as a laboratory experiment, I find evidence of an asymmetrical relation between a firm's debt maturity structure choice and its growth opportunities. Firms with high pre-pandemic exposure to growth-inducing factors obtained from 10-K filings have increased debt maturity and are more likely to exercise a call on their callable bonds, while firms with high pre-pandemic exposure to growth-reducing factors are null in taking any actions to adjust their debt maturity structure. Further, the increase in debt maturity following exogenous changes in growth opportunities suggests a unique type of change in firms' growth options following the recent pandemic, supporting the arguments proposed by Diamond and He (2014) and Childs, Mauer, and Ott (2005).
