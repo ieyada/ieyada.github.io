@@ -10,5 +10,5 @@ location: "Terre Haute, IN"
 
 An introductory business statistics course. Topics include graphical concepts, measures of central tendency and dispersion, basic probability concepts, random variables, central limit theorem, and hypothesis testing and confidence intervals. Learning is assisted by statistical software applications. The emphasis is on problem solving for decision making.
 
-Adjunct Instructor
+Adjunct Instructor. 
 Number of students: 30, Evaluation score: 3.77
