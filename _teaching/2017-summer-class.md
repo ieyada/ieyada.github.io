@@ -1,7 +1,7 @@
 ---
 title: "Investment Analysis & Portfolio Management (FINA469)"
 collection: teaching
-type: "Workshop"
+type: "Undergraduate Course"
 permalink: /teaching/2017-summer-class
 venue: "University of South Carolina, Darla Moore School of Business"
 date: 2017-08-01
