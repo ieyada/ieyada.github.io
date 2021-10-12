@@ -2,7 +2,7 @@
 title: "Corporate Payouts Under Economic
 Policy Uncertainty"
 collection: workingpapers
-permalink: /workingpapers/2016-Payout-EPU
+permalink: /files/Payout_epu.pdf
 date: 2016-10-07
 venue: 'N.A'
 paperurl: 'N.A'
