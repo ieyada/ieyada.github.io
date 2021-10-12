@@ -1,7 +1,7 @@
 ---
 title: "Risk Exposure Concentration and Debt Maturity"
 collection: workingpapers
-permalink: /files/REC_debt.PDF
+permalink: /files/REC_debt.pdf
 date: 2021-10-08
 venue: 'N.A'
 paperurl: 'N.A'
