@@ -3,9 +3,9 @@ title: "Corporate Payouts Under Economic
 Policy Uncertainty"
 collection: workingpapers
 permalink: /workingpaper/2016-Payout-EPU
-date: 2016-10-07
+date: 2021-11-07
 venue: 'N.A'
 paperurl: "https://ieyada.github.io/files/Payout_epu.pdf"
 citation: 'Alhudhaif, Eyad. (2016). &quot;Corporate Payouts Under Economic Policy Uncertainty&quot;. <i>Working Paper</i>.'
 ---
-Using a sample of all public firms in the U.S. between 1985 and 2015, I examine the relation between firm's payout policy behavior under changes economic policy uncertainties, both total and individual components of payouts; dividends and open market share repurchases. Using the EPU index and its components developed by Baker (2016), I find payout programs tend to respond differently depending on the source of economic uncertainty. A persistent negative relationship exists between the level of uncertainty in government spending (GSU) and firms' average level of dividends, share repurchase, and total payout.
+Using a sample of all public firms in the U.S. between 1985 and 2019, I examine whether general economic policy uncertainty, monetary policy uncertainty, and fiscal policy uncertainty have heterogeneous effects on corporate payouts; mainly dividends and open market share repurchases. I find a consistent negative relation between share repurchases and EPU, and the effect seems to be more pronounced under fiscal policy uncertainties as appose to monetary policy uncertainties. Finally, the negative relation is mainly driven by capital constrained firms. Taken together, the findings suggest that withholding funds is more valuable than dispersing cash to investors to mitigate agency costs of free cash flows, at least in the United States. This empirical test relies on the economic policy uncertainty (EPU) index and its subcategories developed by Baker et al., 2016.
