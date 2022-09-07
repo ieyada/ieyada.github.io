@@ -8,13 +8,13 @@ redirect_from:
   - /about.html
 ---
 
-Welcome to my academic website. My name is Eyad, a Saudi Arabian academic and researcher in the field of Finance. Graduated from [The University of South Carolina](https://sc.edu) - [Darla Moore School of Business](https://sc.edu/study/colleges_schools/moore/index.php). My research interests include Corporate Finance, Debt Maturity Structure, and Textual Analysis of Financial Disclosures.
+Welcome to my website. My name is Eyad, and I am an academic researcher in the field of Finance. Currently, I am working as an Assistant Professor of Finance at [King Saud University](https://ksu.edu.sa/en/) in Saudi Arabia.
+I received my PhD from [The University of South Carolina](https://sc.edu) - [Darla Moore School of Business](https://sc.edu/study/colleges_schools/moore/index.php). My research interests include Corporate Finance, Debt Maturity Structure, and Textual Analysis of Financial Disclosures.
 
-I received my MBA from the [Scott College of Business at Indiana State University](https://www.indstate.edu/business/), and my B.S. from [King Saud Univerisity](https://cba.ksu.edu.sa/en). 
-
+I am also an ISU alumni; I received my MBA from the [Scott College of Business at Indiana State University](https://www.indstate.edu/business/).
 
 
 ### Free time
 
-* Travel and Camping
+* Road Trips and Camping
 * Pool (Billiards)
