@@ -5,7 +5,7 @@ type: "Undergraduate Course"
 permalink: /teaching/2022-quan127-fall-class
 venue: "King Saud University - Muzayimiyah Campus"
 date: 2022-09-01
-location: "Muzahimiyah, Saud Arabia"
+location: "Muzahimiyah, Saudi Arabia"
 ---
 
 This course provides a mathematical introduction into the area of finance. More specifically, it attempts to explain the math behind neoclassical theories in financial asset pricing, such as expected return anr risk, present value, pricing contracts, and the Black-Scholes Formula.
