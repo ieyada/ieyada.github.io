@@ -8,6 +8,4 @@ date: 2022-09-01
 location: "Muzahmiyah, Saudi Arabia"
 ---
 
-The course provides an in-depth discussion of fundamental principles related to investment analysis and portfolio management. Topics include investment instruments, portfolio theory, equity valuation, fixed-income securities, and option valuation. Upon the completion of the course, students are expected to understand security market functions, recognize the risk-return trade-off in investments, and able to develop investment strategies. Further, understanding the knowledge covered in the course help students prepare for the CFA exams. 
-
-(*Number of students: 18, Evaluation score: 3.77 out of 5*)
+The course provides an in-depth discussion of fundamental principles related to investment analysis and portfolio management. Topics include investment instruments, portfolio theory, equity valuation, fixed-income securities, and option valuation. Upon the completion of the course, students are expected to understand security market functions, recognize the risk-return trade-off in investments, and able to develop investment strategies. Further, understanding the knowledge covered in the course help students prepare for the CFA exams. <br/> (*Number of students: 18, Evaluation score: 3.77 out of 5*)
