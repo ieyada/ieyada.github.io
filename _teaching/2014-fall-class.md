@@ -3,7 +3,7 @@ title: "Business Statistics I (BUS205)"
 collection: teaching
 type: "Undergraduate Course"
 permalink: /teaching/2014-fall-class
-venue: "Indiana State Univeristy, Scott College of Business"
+venue: "Indiana State University, Scott College of Business"
 date: 2015-01-01
 location: "Terre Haute, IN"
 ---
