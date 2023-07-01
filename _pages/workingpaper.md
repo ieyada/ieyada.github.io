@@ -1,21 +1,13 @@
 ---
 layout: archive
-title: "Papers"
-permalink: /papers/
+title: "Working Papers"
+permalink: /workingpaper/
 author_profile: true
 ---
 
-# <center> Working Papers </center>
-- - -
+{% include base_path %}
 
 {% for post in site.workingpapers reversed %}
-  {% include archive-single.html %}
-{% endfor %}
-
-# <center> Publications </center>
----
-
-{% for post in site.publications reversed %}
   {% include archive-single.html %}
 {% endfor %}
 

@@ -1,7 +1,7 @@
 ---
 title: "The Asymmetry Between Growth Opportunities and Debt Maturity Structure"
-collection: papers
-permalink: papers/workingpaper/2020-Growth-Debt
+collection: workingpapers
+permalink: /workingpapers/2020-Growth-Debt
 date: 2021-05-07
 venue: 'NA'
 paperurl: 'https://dx.doi.org/10.2139/ssrn.3906487'
