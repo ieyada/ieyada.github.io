@@ -6,14 +6,14 @@ author_profile: true
 ---
 {% include base_path %}
 
-# <center> Working Papers </center>
+* <center> Working Papers </center>*
 - - -
 
 {% for post in site.workingpapers reversed %}
   {% include archive-single.html %}
 {% endfor %}
 
-# <center> Publications </center>
+* <center> Publications </center>*
 ---
 
 {% for post in site.publications reversed %}
