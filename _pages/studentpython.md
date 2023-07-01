@@ -1,7 +1,14 @@
 ---
-title: "Resources to Apply Python in Finance"
+title: "Python Resources"
 permalink: /studentpython/
 author_profile: true
 ---
 
-Measuring Returns and Constructing a Portfolio
+## *For Finance Students*
+* [Dealing with Stock Data](https://ieyada.github.io/files/Stock_Data.html)
+
+* [Portfolio Construction & Measuring Risk](https://ieyada.github.io/files/Portfolio_Risk.html)
+
+* [Finding the Efficient Frontier ](https://ieyada.github.io/files/Efficient_Frontier.html)
+
+## *For Instructors*
