@@ -4,11 +4,12 @@ title: "Papers"
 permalink: /papers/
 author_profile: true
 ---
+{% include base_path %}
 
 # <center> Working Papers </center>
 - - -
 
-{% for post in site.workingpapers reversed %}
+{% for post in site.workingpaper reversed %}
   {% include archive-single.html %}
 {% endfor %}
 
