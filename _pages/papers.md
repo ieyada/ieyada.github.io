@@ -9,7 +9,7 @@ author_profile: true
 # <center> Working Papers </center>
 - - -
 
-{% for post in site.workingpaper reversed %}
+{% for post in site.workingpapers reversed %}
   {% include archive-single.html %}
 {% endfor %}
 
