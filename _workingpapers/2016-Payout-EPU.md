@@ -1,8 +1,8 @@
 ---
 title: "Corporate Payouts Under Economic
 Policy Uncertainty"
-collection: workingpapers
-permalink: /workingpaper/2016-Payout-EPU
+collection: papers
+permalink: papers/workingpaper/2016-Payout-EPU
 date: 2021-11-07
 venue: 'N.A'
 paperurl: "https://ieyada.github.io/files/Payout_epu.pdf"

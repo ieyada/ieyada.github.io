@@ -176,13 +176,10 @@ collections:
   datasets:
     output: true
     permalink: /:collection/:path/
-  workingpapers:
+  papers:
     output: true
     permalink: /:collection/:path/
   teaching:
-    output: true
-    permalink: /:collection/:path/
-  publications:
     output: true
     permalink: /:collection/:path/
   portfolio:
@@ -231,19 +228,10 @@ defaults:
       author_profile: true
       share: true
       comments: true
-  # _workingpapers
+  # _papers
   - scope:
       path: ""
-      type: workingpapers
-    values:
-      layout: single
-      author_profile: true
-      share: true
-      comments: true
-  # _publications
-  - scope:
-      path: ""
-      type: publications
+      type: papers
     values:
       layout: single
       author_profile: true
