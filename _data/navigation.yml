@@ -13,11 +13,8 @@ main:
   - title: "Data"
     url: /datasets/
 
-  - title: "Working Papers"
-    url: /workingpapers/
-
-  - title: "Publications"
-    url: /publications/
+  - title: "Papers"
+    url: /papers/
     
   - title: "Teaching"
     url: /teaching/
