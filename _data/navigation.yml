@@ -9,6 +9,8 @@ main:
     
   #- title: "Portfolio"
   #  url: /portfolio/
+  - title: "Curriculum Vitae"
+    url: "https://ieyada.github.io/files/Official_cv.pdf"  
 
   - title: "Data"
     url: /datasets/
@@ -19,8 +21,9 @@ main:
   - title: "Teaching"
     url: /teaching/
 
-  - title: "Curriculum Vitae"
-    url: "https://ieyada.github.io/files/Official_cv.pdf"  
+  - title: "Python Resources"
+    url: /studentpython/
+  
   
   - title: "Blog"
     # url: /year-archive/
