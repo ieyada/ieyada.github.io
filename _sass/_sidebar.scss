@@ -204,7 +204,7 @@
     width: 0;
     border-style: solid;
     border-width: 0 10px 10px;
-    border-color: mix(#000, $body-color, 40%) transparent;
+    border-color: $border-color transparent;
     z-index: 1;
 
     @include breakpoint($large) {
