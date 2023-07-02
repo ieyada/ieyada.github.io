@@ -151,7 +151,7 @@
     }
 
     &.disabled {
-      color: mix(#fff, $gray, 75%);
+      color: mix(#fff, $text-color, 75%);
       pointer-events: none;
       cursor: not-allowed;
     }
@@ -196,7 +196,7 @@
     padding: 0 0.5rem;
     border: 0;
     outline: none;
-    background-color: mix(#000, $body-color, 40%);
+    background-color: $background-color;
     color: #000;
     cursor: pointer;
   }
