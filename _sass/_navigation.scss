@@ -255,7 +255,6 @@
     right: 0;
     margin-top: 15px;
     padding: 5px;
-    /*border: 0px solid $border-color;*/
     border-radius: $border-radius;
     background: $background-color;
     box-shadow: 0 0 10px rgba(#000, 0.25);
@@ -275,7 +274,7 @@
     &:before {
       content: "";
       position: absolute;
-      top: -11px;
+      top: -5px;
       right: 10px;
       width: 0;
       border-style: solid;
@@ -300,7 +299,7 @@
 
     li {
       display: block;
-      /*border-bottom: 1px solid $border-color*/;
+      
 
       &:last-child {
         border-bottom: none;
