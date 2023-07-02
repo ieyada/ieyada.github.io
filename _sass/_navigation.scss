@@ -231,8 +231,8 @@
         position: absolute;
         left: 0;
         bottom: 0;
-        height: 4px;
-        background: $text-color; /*mix(#fff, $primary-color, 50%);*/
+        height: 3px;
+        background: $text-color; 
         width: 100%;
         -webkit-transition: $global-transition;
         transition: $global-transition;
