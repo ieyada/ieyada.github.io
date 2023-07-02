@@ -11,8 +11,8 @@ $border-color: #e9dcbe !default;
 $footer-background-color: #e9dcbe !default;
 $link-color: #1035c6 !default;
 $masthead-link-color: $text-color !default;
-$masthead-link-color-hover: mix(#000000, $text-color, 70%) !default;
-$navicon-link-color-hover: mix(#fff, $text-color, 80%) !default;
+$masthead-link-color-hover: mix(#000000, $text-color, 50%) !default;
+$navicon-link-color-hover: mix(#000000, $text-color, 50%) !default;
 
 /* dirt syntax highlighting (base16) */
 $base00: #231e18 !default;
