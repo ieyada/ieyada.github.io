@@ -39,7 +39,7 @@
     {% endif %}
 
         {% if post.collection == 'teaching' %}
-          <p>{{ page.type }}, <a href="{{ page.unilink }}" target="_blank" rel="noopener noreferrer" ><i>{{ page.venue }}</i></a>, {{ page.date | default: "1900-01-01" | date: "%Y" }} </p>
+          <p>{{ page.type }}, <i>{{ page.venue | markdownify | remove: '<p>' | remove: '</p>' }}</i>, {{ page.date | default: "1900-01-01" | date: "%Y" }} </p>
         {% elsif post.collection == 'publications' %}
           <p>Published in <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
         {% elsif post.collection == 'workingpapers' %}
