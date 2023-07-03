@@ -4,7 +4,7 @@ collection: teaching
 type: "Undergraduate Course"
 permalink: /teaching/2022-fina363-fall-class
 venue: "King Saud University- Muzahmiyah Campus"
-link: "https://ksu.edu.sa/en/"
+Unilink: "https://ksu.edu.sa/en/"
 date: 2022-09-01
 location: "Muzahmiyah, Saudi Arabia"
 ---

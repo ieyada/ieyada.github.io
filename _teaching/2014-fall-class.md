@@ -4,7 +4,7 @@ collection: teaching
 type: "Undergraduate Course"
 permalink: /teaching/2014-fall-class
 venue: "Indiana State University, Scott College of Business"
-Link: "https://www.indstate.edu/business/"
+Unilink: "https://www.indstate.edu/business/"
 date: 2015-01-01
 location: "Terre Haute, IN"
 ---

@@ -4,7 +4,7 @@ collection: teaching
 type: "Undergraduate Course"
 permalink: /teaching/2017-summer-class
 venue: "University of South Carolina, Darla Moore School of Business"
-Link: "https://sc.edu/study/colleges_schools/moore/"
+Unilink: "https://sc.edu/study/colleges_schools/moore/"
 date: 2017-08-01
 location: "Columbia, SC"
 ---
