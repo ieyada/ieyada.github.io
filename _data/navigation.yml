@@ -4,8 +4,6 @@ main:
   #- title: "Talks"
   #  url: /talks/    
 
-  #- title: "Teaching"
-  #  url: /teaching/    
     
   #- title: "Portfolio"
   #  url: /portfolio/
@@ -16,7 +14,7 @@ main:
     url: /datasets/
 
   - title: "Research"
-    url: /Research/
+    url: /research/
     
   - title: "Teaching"
     url: /teaching/
