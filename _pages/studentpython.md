@@ -12,3 +12,4 @@ author_profile: true
 * [Finding the Efficient Frontier (FINA423 Course)](https://ieyada.github.io/files/Efficient_Frontier.html)
 
 ## *For Instructors*
+* [An Auto-Exam Genrator Program](https://github.com/ieyada/exam_maker)
