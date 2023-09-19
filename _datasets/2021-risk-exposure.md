@@ -6,7 +6,7 @@ permalink: /datasets/2021-risk-exposure
 date: 2021-01-01
 ---
 
-Firm-level risk exposures are derived by first parsing all public 10-K filings available in the EDGAR database reported between 1/1/2018 and 3/1/20206. Specifically, all readable text under "Item 1" is processed by a Python program to ensure the extracted raw terms are following the standard procedure in the text-analysis literature; i.e., the text is cleaned from abbreviations, headings, plurals, stop words, and numbers, leaving only relevant lower-cased terms. Firm $i$'s level of risk exposure to category $j$ is defined each calender year as:
+Firm-level risk exposures are derived by first parsing all public 10-K filings available in the EDGAR database reported between 1/1/2018 and 3/1/2020. Specifically, all readable text under "Item 1" is processed by a Python program to ensure the extracted raw terms are following the standard procedure in the text-analysis literature; i.e., the text is cleaned from abbreviations, headings, plurals, stop words, and numbers, leaving only relevant lower-cased terms. Firm $i$'s level of risk exposure to category $j$ is defined each calender year as:
 {: style="text-align: justify;"}
 $$Risk\, Exposure_{i,j} = \frac{\sum_{y,j}^{Y,j}term_{y,j}}{\sum_{j=1}^{J=44}\sum_{y,j}^{Y,j}term_{y,j}}$$ 
 {: style="text-align: center;"}
