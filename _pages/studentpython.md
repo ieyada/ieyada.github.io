@@ -9,6 +9,8 @@ author_profile: true
 
 * [Portfolio Construction & Measuring Risk (FINA423 Course)](https://ieyada.github.io/files/Portfolio_Risk.html)
 
+* [Portfolio Optimizations (FINA423 Course)](https://ieyada.github.io/files/Portfolio_Opt.html)
+
 * [Finding the Efficient Frontier (FINA423 Course)](https://ieyada.github.io/files/Efficient_Frontier.html)
 
 ## *For Instructors*
