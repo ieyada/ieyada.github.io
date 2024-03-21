@@ -7,10 +7,9 @@ redirect_from:
   - /about/
   - /about.html
 ---
- <p>&nbsp;</p>
+
 
 Welcome to my website!
-
 
 I am an assistant professor in the Finance department at [*King Saud University*](https://ksu.edu.sa/en/) in Saudi Arabia. My main research interests are in corporate finance, primarily on debt maturity structures, and textual analysis of financial disclosures. I also worked on corporate payout policy and asset pricing.
 {: style="text-align: justify;"}
