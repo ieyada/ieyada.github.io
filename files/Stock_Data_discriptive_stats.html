@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Portfolio_Opt</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>Stock_Data_discriptive_stats</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7476,21 +7476,19 @@ a.anchor-link {
 <!-- End of mermaid configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3ee17f46">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Portfolio-Mean-Variance-Optimization"><strong>Portfolio Mean-Variance Optimization</strong><a class="anchor-link" href="#Portfolio-Mean-Variance-Optimization">¶</a></h1><p>In this document, you will learn how to find the optimal portfolio using the Markowitz Model (Mean-Variance Optimization Method) for a fixed list of securities. This notebook is a sequel to previous notes where I am using a dataset of roughly 14 securities. Thus I
-suggest you read the previous note to fully understand what is going on here.</p>
+<h1 id="Downloading-Stock-Data-Using-Python-Code:">Downloading Stock Data Using Python Code:<a class="anchor-link" href="#Downloading-Stock-Data-Using-Python-Code:">¶</a></h1><p>In this document, we will apply what we learned in the last lecture by obtaining a list of US stock data using the package <code>yfinance</code>. Then we obtain some preliminary statistics on this data.</p>
 <hr/>
-<p>As always, I start this notebook with the packages I will need for my analysis:</p>
-<h2 id="Installation:">Installation:<a class="anchor-link" href="#Installation:">¶</a></h2><p>If you do not have the package <code>pypfopt</code> installed on your computer, you need to run this code (Only once on your device):</p>
+<h2 id="Loading-the-necessary-packages">Loading the necessary packages<a class="anchor-link" href="#Loading-the-necessary-packages">¶</a></h2><p>Always make it a habit to load the packages you need in the first cell:</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=19a50a29">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7498,25 +7496,25 @@ suggest you read the previous note to fully understand what is going on here.</p
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
-<span class="o">!{</span>sys.executable<span class="o">}</span><span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>PyPortfolioOpt
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># This package is used for downloading stock data from Yahoo Finance</span>
+<span class="c1"># we will import it in our project and give it a nickname (yf)</span>
+<span class="kn">import</span> <span class="nn">yfinance</span> <span class="k">as</span> <span class="nn">yf</span>
+<span class="c1"># This package is important so we can use tables and datasets </span>
+<span class="c1"># we will nickname it (pd)</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="c1"># load the package (datetime) and refer it as the nickname (dt)</span>
+<span class="kn">import</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span>
+<span class="c1"># The following package allows us to draw figures and charts</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="c1"># Numpy is a package that helps python use math to deal with numbers</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Now I will import the libraries I need for my session:</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=5271cd2d">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7524,810 +7522,15 @@ suggest you read the previous note to fully understand what is going on here.</p
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pypfopt</span> <span class="kn">import</span> <span class="n">EfficientFrontier</span>
-<span class="kn">from</span> <span class="nn">pypfopt</span> <span class="kn">import</span> <span class="n">risk_models</span>
-<span class="kn">from</span> <span class="nn">pypfopt</span> <span class="kn">import</span> <span class="n">expected_returns</span>
-
-
-<span class="c1"># This is the package for downloading stock data</span>
-<span class="kn">import</span> <span class="nn">yfinance</span> <span class="k">as</span> <span class="nn">yf</span><span class="o">,</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span><span class="o">,</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span><span class="o">,</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span><span class="o">,</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span><span class="o">,</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
-
-<span class="c1"># This package provides a tool for optimizing any objective </span>
-<span class="c1"># It is similar to the Excel tool (Solver)</span>
-<span class="c1"># I will use it as an alternative method to the package (pypfopt)</span>
-<span class="kn">import</span> <span class="nn">scipy.optimize</span> <span class="k">as</span> <span class="nn">sco</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Note I am adding new packages:</p>
-<ul>
-<li><p><code>scipy</code>: This package has a series of functions. One of them (<code>optimize</code>) allows the user to instruct Python to optimize any particular function; meaning to try different scenarios or changing my inputs until to reach either the maximum value or the minimum value possible. It is similar to the tool (Solver) in Excel.</p>
-</li>
-<li><p><code>pypfopt</code>: This package called PyPortfolioOpt is very helpful for any quantitative financial analyst, it allows the user to solve most of the problems we try to solve in finance in a faster and more efficient way. The only issue (from my experience) is that it is not customizable to the user's particular need. I will explain that later when I start using the package at the end of this note. You can read more about it on their official page: [https://pyportfolioopt.readthedocs.io/en/latest/]</p>
-</li>
-</ul>
-<hr/>
-<p>In the following steps, I will upload the excel dataset I saved in the previous notebook, which includes the monthly returns for all the tickers + the monthly risk-free rate. Then I will drop some columns and rows that I do not need from this table.</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">main_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">'returns_cleaned.xlsx'</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">'Date'</span><span class="p">)</span>
-<span class="n">main_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[ ]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>AMZN</th>
-<th>BA</th>
-<th>CVX</th>
-<th>DIS</th>
-<th>GOLD</th>
-<th>HSY</th>
-<th>INTC</th>
-<th>K</th>
-<th>KO</th>
-<th>M</th>
-<th>MMM</th>
-<th>MSFT</th>
-<th>NVDA</th>
-<th>^W5000</th>
-<th>Risk Free</th>
-<th>Port_1</th>
-</tr>
-<tr>
-<th>Date</th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>2000-02</th>
-<td>0.066796</td>
-<td>-0.169944</td>
-<td>-0.106876</td>
-<td>-0.063683</td>
-<td>-0.003817</td>
-<td>0.033823</td>
-<td>0.142136</td>
-<td>0.043815</td>
-<td>-0.153428</td>
-<td>-0.118619</td>
-<td>-0.058078</td>
-<td>-0.086845</td>
-<td>0.726813</td>
-<td>0.021192</td>
-<td>NaN</td>
-<td>0.518916</td>
-</tr>
-<tr>
-<th>2000-03</th>
-<td>-0.027223</td>
-<td>0.027196</td>
-<td>0.248125</td>
-<td>0.213236</td>
-<td>-0.038314</td>
-<td>0.115744</td>
-<td>0.167938</td>
-<td>0.028577</td>
-<td>-0.034704</td>
-<td>0.151618</td>
-<td>0.010757</td>
-<td>0.188811</td>
-<td>0.320068</td>
-<td>0.058114</td>
-<td>NaN</td>
-<td>0.258771</td>
-</tr>
-<tr>
-<th>2000-04</th>
-<td>-0.176306</td>
-<td>0.049587</td>
-<td>-0.079108</td>
-<td>0.057576</td>
-<td>0.071714</td>
-<td>-0.066667</td>
-<td>-0.038844</td>
-<td>-0.058252</td>
-<td>0.010433</td>
-<td>-0.195266</td>
-<td>-0.021877</td>
-<td>-0.343529</td>
-<td>0.054929</td>
-<td>-0.052775</td>
-<td>NaN</td>
-<td>0.018450</td>
-</tr>
-<tr>
-<th>2000-05</th>
-<td>-0.124575</td>
-<td>-0.015748</td>
-<td>0.085904</td>
-<td>-0.032951</td>
-<td>0.078067</td>
-<td>0.140109</td>
-<td>-0.016757</td>
-<td>0.252577</td>
-<td>0.129630</td>
-<td>0.132353</td>
-<td>-0.010101</td>
-<td>-0.103047</td>
-<td>0.280505</td>
-<td>-0.036091</td>
-<td>NaN</td>
-<td>0.238386</td>
-</tr>
-<tr>
-<th>2000-06</th>
-<td>-0.248383</td>
-<td>0.074325</td>
-<td>-0.076026</td>
-<td>-0.080000</td>
-<td>0.008687</td>
-<td>-0.060264</td>
-<td>0.072445</td>
-<td>-0.012356</td>
-<td>0.076112</td>
-<td>-0.123377</td>
-<td>-0.025796</td>
-<td>0.278721</td>
-<td>0.113911</td>
-<td>0.043327</td>
-<td>NaN</td>
-<td>0.061658</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># I will drop the the columns (Port_1 &amp; Risk Fee) since I do not need them in my task here</span>
-<span class="c1"># I am using "Inplace" so I replace the existing table "main_data" with this new one</span>
-<span class="n">main_data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'Port_1'</span><span class="p">,</span> <span class="s1">'Risk Free'</span><span class="p">],</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-
-<span class="n">main_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[ ]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>AMZN</th>
-<th>BA</th>
-<th>CVX</th>
-<th>DIS</th>
-<th>GOLD</th>
-<th>HSY</th>
-<th>INTC</th>
-<th>K</th>
-<th>KO</th>
-<th>M</th>
-<th>MMM</th>
-<th>MSFT</th>
-<th>NVDA</th>
-<th>^W5000</th>
-</tr>
-<tr>
-<th>Date</th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>2000-02</th>
-<td>0.066796</td>
-<td>-0.169944</td>
-<td>-0.106876</td>
-<td>-0.063683</td>
-<td>-0.003817</td>
-<td>0.033823</td>
-<td>0.142136</td>
-<td>0.043815</td>
-<td>-0.153428</td>
-<td>-0.118619</td>
-<td>-0.058078</td>
-<td>-0.086845</td>
-<td>0.726813</td>
-<td>0.021192</td>
-</tr>
-<tr>
-<th>2000-03</th>
-<td>-0.027223</td>
-<td>0.027196</td>
-<td>0.248125</td>
-<td>0.213236</td>
-<td>-0.038314</td>
-<td>0.115744</td>
-<td>0.167938</td>
-<td>0.028577</td>
-<td>-0.034704</td>
-<td>0.151618</td>
-<td>0.010757</td>
-<td>0.188811</td>
-<td>0.320068</td>
-<td>0.058114</td>
-</tr>
-<tr>
-<th>2000-04</th>
-<td>-0.176306</td>
-<td>0.049587</td>
-<td>-0.079108</td>
-<td>0.057576</td>
-<td>0.071714</td>
-<td>-0.066667</td>
-<td>-0.038844</td>
-<td>-0.058252</td>
-<td>0.010433</td>
-<td>-0.195266</td>
-<td>-0.021877</td>
-<td>-0.343529</td>
-<td>0.054929</td>
-<td>-0.052775</td>
-</tr>
-<tr>
-<th>2000-05</th>
-<td>-0.124575</td>
-<td>-0.015748</td>
-<td>0.085904</td>
-<td>-0.032951</td>
-<td>0.078067</td>
-<td>0.140109</td>
-<td>-0.016757</td>
-<td>0.252577</td>
-<td>0.129630</td>
-<td>0.132353</td>
-<td>-0.010101</td>
-<td>-0.103047</td>
-<td>0.280505</td>
-<td>-0.036091</td>
-</tr>
-<tr>
-<th>2000-06</th>
-<td>-0.248383</td>
-<td>0.074325</td>
-<td>-0.076026</td>
-<td>-0.080000</td>
-<td>0.008687</td>
-<td>-0.060264</td>
-<td>0.072445</td>
-<td>-0.012356</td>
-<td>0.076112</td>
-<td>-0.123377</td>
-<td>-0.025796</td>
-<td>0.278721</td>
-<td>0.113911</td>
-<td>0.043327</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>*<strong>Remember, my objective is to find the best portfolio I can create with these tickers. Thus, my decision variable is to choose the set of weights that gives me the best portfolio.</strong>*</p>
-<p>The package <code>scipy</code> has a function called <code>optimize</code> (recall that I gave it a nickname "sco"). This function will be very helpful in solving this problem for me. <code>optimize</code> takes several arguments; for example what is the variable you would like to optimize? If there are any constraints (conditions), what are they? What method to use for finding the optimal solution? And so on...</p>
-<hr/>
-<h2 id="Setting-up-the-optimization-problem">Setting up the optimization problem<a class="anchor-link" href="#Setting-up-the-optimization-problem">¶</a></h2><p>The objective here is to set up the following mathematical optimization problem in Python:</p>
-$$\max{\left[Sharpe = \frac{E(R_{p}) - R_{f}}{\sigma_{p}}\right]}$$<p><em>s.t.</em>
-$$\sum^{N}_{i=1} w_{i} = 1$$
-$$0 \leq w_{i} \leq 1$$
-$$\sigma_{p} = \sqrt{\sum^{N}_{j=1} w_{j} \sum^{N}_{i=1} w_{i}\sigma_{ij}}$$</p>
-<p>In our example, I would like to find the <em>optimal</em> weights that will yield the highest Sharpe ratio possible for the stocks we have information about. 
-Subject to several constraints:</p>
-<ol>
-<li>The sum of these weights needs to equal to 1</li>
-<li>The weights for each ticker should be between 0 and 1</li>
-<li>The risk of the portfolio will be calculated using the suggested weights</li>
-</ol>
-<p>So let me show you how it can be set in <code>scipy</code>:</p>
-<hr/>
-<h3 id="First,-define-some-functions:">First, define some functions:<a class="anchor-link" href="#First,-define-some-functions:">¶</a></h3><p>Functions are helpful tools to use in Python. Think of them as a series of Python instructions and calculations that are done in one line, and can be done to any variable. In essence, the user provides the <em>inputs</em> and the function returns the <em>output</em>.</p>
-<p>The following functions will be useful for our task. The first one measures the portfolio return, the other one measures the portfolio risk, and the third one measures the negative of the Sharpe ratio for a given portfolio:</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Define a function that measures a portfolio return</span>
-<span class="k">def</span> <span class="nf">port_return</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">asset_exp_returns</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">'''This function takes two arguments:</span>
-<span class="sd">    1) A Numpy vector of weights (called it 'weights' )</span>
-<span class="sd">    2) A list of the stock expected returns (called it 'asset_exp_returns')</span>
-<span class="sd">    </span>
-<span class="sd">    The function will multiply each weight with the </span>
-<span class="sd">    expected return to find the portfolio expected return. </span>
-<span class="sd">    (Similar to SUMPRODUCT in Excel)'''</span>
-
-    <span class="c1"># Here is the calculation</span>
-    <span class="n">the_return</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">asset_exp_returns</span> <span class="o">*</span> <span class="n">weights</span><span class="p">)</span>
-
-
-    <span class="c1"># I then ask the function to return this variable back when it is called</span>
-    <span class="k">return</span> <span class="n">the_return</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Making sure it works by setting the weight to 100% in BA (the second stock in my list):</span>
-<span class="n">w_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
-<span class="n">test</span> <span class="o">=</span> <span class="n">port_return</span><span class="p">(</span><span class="n">w_list</span><span class="p">,</span> <span class="n">main_data</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>0.012425234983117038
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Define a function that measures a portfolio's risk</span>
-<span class="k">def</span> <span class="nf">port_risk</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">cov</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">'''This function takes two arguments:</span>
-<span class="sd">    1) A Numpy vector of weights (called it 'weights' )</span>
-<span class="sd">    2) A covariance table (called it 'cov' )</span>
-<span class="sd">    </span>
-<span class="sd">    This function will do a matrix multiplication to measure the </span>
-<span class="sd">    portfolio volatility. Then takes the square root of the </span>
-<span class="sd">    calculated volatility and return to the user the portfolio risk.'''</span>
-    
-    <span class="n">volatility</span> <span class="o">=</span> <span class="n">weights</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">cov</span><span class="p">)</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">weights</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
-    <span class="n">std</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">volatility</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">std</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Making sure it works by setting the weight to 100% in BA:</span>
-<span class="n">w_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
-<span class="n">test</span> <span class="o">=</span> <span class="n">port_risk</span><span class="p">(</span><span class="n">w_list</span><span class="p">,</span> <span class="n">main_data</span><span class="o">.</span><span class="n">cov</span><span class="p">())</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>0.09559818130914506
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Define a function that measures the negative value of the Sharpe ratio</span>
-<span class="k">def</span> <span class="nf">neg_s_ratio</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">exp_returns</span><span class="p">,</span> <span class="n">cov</span><span class="p">,</span> <span class="n">r_f</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">'''This function takes 4 arguments:</span>
-<span class="sd">    1) A Numpy vector of weights</span>
-<span class="sd">    2) A list of the stock expected returns</span>
-<span class="sd">    3) A covariance table</span>
-<span class="sd">    4) The risk free rate (Represented as a fraction)</span>
-<span class="sd">    </span>
-<span class="sd">    This function will measure the negative value of the </span>
-<span class="sd">    Sharpe ratio for any portfolio.'''</span>
-    
-    <span class="n">port_return</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">exp_returns</span> <span class="o">*</span> <span class="n">weights</span><span class="p">)</span>
-    <span class="n">port_risk</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">weights</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">cov</span><span class="p">)</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">weights</span><span class="o">.</span><span class="n">T</span><span class="p">))</span>
-    <span class="n">port_sharpe</span> <span class="o">=</span> <span class="p">(</span><span class="n">port_return</span> <span class="o">-</span> <span class="n">r_f</span><span class="p">)</span><span class="o">/</span><span class="n">port_risk</span>
-
-    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">port_sharpe</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Making sure it works by setting the weight to 100% in BA:</span>
-<span class="n">w_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
-<span class="n">neg_s_ratio</span><span class="p">(</span><span class="n">w_list</span><span class="p">,</span> <span class="n">main_data</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">main_data</span><span class="o">.</span><span class="n">cov</span><span class="p">(),</span> <span class="n">r_f</span><span class="o">=</span> <span class="mf">0.005</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[ ]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>-0.07767129961505584</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Another example:</span>
-<span class="n">w_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> \
-                   <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">])</span>
-<span class="n">neg_s_ratio</span><span class="p">(</span><span class="n">w_list</span><span class="p">,</span> <span class="n">main_data</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">main_data</span><span class="o">.</span><span class="n">cov</span><span class="p">(),</span> <span class="n">r_f</span><span class="o">=</span> <span class="mf">0.00107</span> <span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[ ]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>-0.21083368940973155</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<hr/>
-<h3 id="Running-the-optimization-problem:">Running the optimization problem:<a class="anchor-link" href="#Running-the-optimization-problem:">¶</a></h3><p>Unfortunately, the <code>scipy</code> package does not offer a maximization function, only a *<strong>minimization function</strong><em>. Thus, if we would like to maximize the Sharpe ratio, we could express our problem </em><em>as minimizing the negative value of the Sharpe ratio</em>*.</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># I will create some variables so I can reference them later </span>
-
-
-<span class="c1"># list of expected returns for each ticker</span>
-<span class="n">exp_returns</span> <span class="o">=</span> <span class="n">main_data</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-
-<span class="c1"># the covariance table for my dataset</span>
-<span class="n">cov</span> <span class="o">=</span> <span class="n">main_data</span><span class="o">.</span><span class="n">cov</span><span class="p">()</span>
-
-<span class="c1"># number of stocks I have </span>
-<span class="n">n_stocks</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">exp_returns</span><span class="p">)</span>
-
-<span class="c1"># the risk-free rate next month</span>
-<span class="n">r_f</span> <span class="o">=</span> <span class="mf">0.005</span>
-
-<span class="c1"># I am defining the arguments I will enter in the optimization problem</span>
-<span class="c1"># They are constants (will not change) and specific for my setup:</span>
-<span class="n">arguments</span> <span class="o">=</span> <span class="p">(</span><span class="n">exp_returns</span><span class="p">,</span> <span class="n">cov</span><span class="p">,</span> <span class="n">r_f</span><span class="p">)</span>
-
-<span class="c1"># I have one constraint (Or condition): the sum of weights should equal 1</span>
-<span class="c1"># This is expressed as sum(w) - 1 = 0: </span>
-<span class="c1"># the function requires me to put the constraints in a dictionary variable:</span>
-<span class="n">constraints</span> <span class="o">=</span> <span class="p">({</span><span class="s1">'type'</span><span class="p">:</span> <span class="s1">'eq'</span><span class="p">,</span> <span class="s1">'fun'</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">w</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">})</span>
-
-
-<span class="c1"># The bounds for my variable (weight) should be between 0 and 1</span>
-<span class="c1"># the function requires me to put the bounds in a tuple variable:</span>
-<span class="n">bounds</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">stock</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_stocks</span><span class="p">)</span> <span class="p">)</span>
-
-<span class="c1"># I will set the weights to initially be equal</span>
-<span class="n">initial_guess</span> <span class="o">=</span> <span class="n">n_stocks</span> <span class="o">*</span> <span class="p">[</span><span class="mi">1</span> <span class="o">/</span> <span class="n">n_stocks</span><span class="p">]</span>
-
-
-<span class="c1"># Run the minimize function and supply it with our specifications:</span>
-<span class="n">optimal_sharpe</span> <span class="o">=</span> <span class="n">sco</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">neg_s_ratio</span><span class="p">,</span>
-                              <span class="n">x0</span> <span class="o">=</span> <span class="n">initial_guess</span><span class="p">,</span>
-                              <span class="n">args</span> <span class="o">=</span> <span class="n">arguments</span><span class="p">,</span>
-                              <span class="n">method</span> <span class="o">=</span> <span class="s1">'SLSQP'</span><span class="p">,</span>
-                              <span class="n">bounds</span> <span class="o">=</span> <span class="n">bounds</span><span class="p">,</span>
-                              <span class="n">constraints</span> <span class="o">=</span> <span class="n">constraints</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Let us see our results:</span>
-
-<span class="c1"># Save the optimal weights 'x' in a variable called "optimal_sharpe_w"</span>
-<span class="n">optimal_sharpe_w</span> <span class="o">=</span> <span class="n">optimal_sharpe</span><span class="p">[</span><span class="s1">'x'</span><span class="p">]</span>
-
-<span class="c1"># Create a dictionary that contains the information of our portfolio</span>
-<span class="n">optimal_port</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'Return'</span><span class="p">:</span> <span class="n">port_return</span><span class="p">(</span><span class="n">optimal_sharpe_w</span><span class="p">,</span> <span class="n">exp_returns</span><span class="p">),</span>
-                <span class="s1">'Risk'</span><span class="p">:</span> <span class="n">port_risk</span><span class="p">(</span><span class="n">optimal_sharpe_w</span><span class="p">,</span> <span class="n">cov</span><span class="p">),</span>
-                <span class="s1">'Sharpe Ratio'</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">optimal_sharpe</span><span class="p">[</span><span class="s1">'fun'</span><span class="p">]}</span>
-
-
-<span class="c1"># Print the results</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'Portfolio with Highest Sharpe Ratio ---'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'Performance'</span><span class="p">)</span>
-<span class="nb">print</span> <span class="p">(</span><span class="s2">"-"</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">optimal_port</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="mi">100</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">value</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">%'</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'Weights:'</span><span class="p">)</span>
-<span class="nb">print</span> <span class="p">(</span><span class="s2">"-"</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">main_data</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">optimal_sharpe_w</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s1">: </span><span class="se">\t</span><span class="s1"> </span><span class="si">{</span><span class="mi">100</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">%'</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="s2">" </span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Portfolio with Highest Sharpe Ratio ---
-Performance
-----------------------------------------------------------------------------------------------------
-Return: 1.87%
-Risk: 5.95%
-Sharpe Ratio: 23.00%
-
-
-Weights:
-----------------------------------------------------------------------------------------------------
-AMZN: 	 14.55% 
-BA: 	 3.35% 
-CVX: 	 0.19% 
-DIS: 	 0.00% 
-GOLD: 	 3.58% 
-HSY: 	 53.51% 
-INTC: 	 0.00% 
-K: 	 0.00% 
-KO: 	 0.00% 
-M: 	 0.00% 
-Risk: 5.95%
-Sharpe Ratio: 23.00%
-
-
-Weights:
-----------------------------------------------------------------------------------------------------
-AMZN: 	 14.55% 
-BA: 	 3.35% 
-CVX: 	 0.19% 
-DIS: 	 0.00% 
-GOLD: 	 3.58% 
-HSY: 	 53.51% 
-INTC: 	 0.00% 
-K: 	 0.00% 
-KO: 	 0.00% 
-M: 	 0.00% 
-MMM: 	 0.00% 
-MSFT: 	 1.73% 
-NVDA: 	 23.10% 
-^W5000: 	 0.00% 
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<hr/>
-<h2 id="Using-an-alternative-Python-package:-(PyPortfolioOpt)">Using an alternative Python package: (PyPortfolioOpt)<a class="anchor-link" href="#Using-an-alternative-Python-package:-(PyPortfolioOpt)">¶</a></h2><p>The package <code>pypfopt</code> can find the weights for the optimal portfolio. To use this package, you need to give it the adjusted closing price, not returns. In addition, the results are annualized. That is, it will find the optimal portfolio with the highest <em>annual</em> return and lowest <em>annual</em> risk.</p>
-<p>Since I do not have the stock prices anymore, I will download them again using <code>yfinance</code></p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">ticker_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"^W5000"</span><span class="p">,</span> <span class="s2">"BA"</span><span class="p">,</span> <span class="s2">"AMZN"</span><span class="p">,</span> <span class="s2">"CVX"</span><span class="p">,</span> <span class="s2">"DIS"</span><span class="p">,</span> <span class="s2">"GOLD"</span><span class="p">,</span> <span class="s2">"HSY"</span><span class="p">,</span>\
-                <span class="s2">"INTC"</span><span class="p">,</span> <span class="s2">"K"</span><span class="p">,</span> <span class="s2">"KO"</span><span class="p">,</span> <span class="s2">"M"</span><span class="p">,</span> <span class="s2">"MMM"</span><span class="p">,</span> <span class="s2">"MSFT"</span><span class="p">,</span> <span class="s2">"NVDA"</span><span class="p">]</span>
-<span class="c1"># Set the start and end date</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># define two variables, which are dates, so we can pass them in the `yf.downlaod` command later</span>
 <span class="n">start_date</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">1999</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">31</span><span class="p">)</span>
 <span class="n">end_date</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">31</span><span class="p">)</span>
-
-<span class="c1"># Instead of using a ticker, now we will pass the name of the list</span>
-<span class="n">stock_data</span> <span class="o">=</span> <span class="n">yf</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">ticker_list</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end_date</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="s1">'1mo'</span><span class="p">)</span>
-
-<span class="c1"># We only need the adj. close prices, so I "slice" the table and replace the original table name</span>
-<span class="n">stock_data</span> <span class="o">=</span> <span class="n">stock_data</span><span class="p">[</span><span class="s1">'Adj Close'</span><span class="p">]</span>
+<span class="c1"># Note that if you want to add days, weeks, or months, you can use the command dt.timedelta().</span>
+<span class="c1"># for example:</span>
+<span class="n">add_days</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">new_start_date</span> <span class="o">=</span> <span class="n">start_date</span> <span class="o">+</span> <span class="n">add_days</span>
+<span class="n">new_end_date</span> <span class="o">=</span> <span class="n">end_date</span> <span class="o">+</span> <span class="n">add_days</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">new_start_date</span><span class="p">,</span> <span class="n">new_end_date</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -8340,26 +7543,24 @@ NVDA: 	 23.10%
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>[*********************100%%**********************]  14 of 14 completed
+<pre>2000-04-09 2024-04-09
 </pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8d73f5aa">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<hr/>
-<p>Running the optimization problem:</p>
-<p>The package has some "extensions" that can calculate expected returns and covariances. The only thing you need to do is supply the table that has the prices.</p>
+<h2 id="Obtaining-stock-data-for-multiple-companies-in-one-comaand">Obtaining stock data for multiple companies in one comaand<a class="anchor-link" href="#Obtaining-stock-data-for-multiple-companies-in-one-comaand">¶</a></h2><p>By passing a list of tickers, the function can obtain data of multiple companies instead of running the function <code>.download</code> each time.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=be25448e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8367,31 +7568,10 @@ NVDA: 	 23.10%
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># I will use the extension from the package to measure the expected return for each ticker</span>
-<span class="c1"># and save in a variable called "mu"</span>
-<span class="n">mu</span> <span class="o">=</span> <span class="n">expected_returns</span><span class="o">.</span><span class="n">mean_historical_return</span><span class="p">(</span><span class="n">stock_data</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
-
-<span class="c1"># The same story here; use the extension from the package to measure the covariance table</span>
-<span class="n">S</span> <span class="o">=</span> <span class="n">risk_models</span><span class="o">.</span><span class="n">sample_cov</span><span class="p">(</span><span class="n">stock_data</span><span class="p">)</span>
-
-
-<span class="c1"># the variable that has all the specifications </span>
-<span class="c1"># of the optimization problem will be named 'ef'</span>
-<span class="n">ef</span> <span class="o">=</span> <span class="n">EfficientFrontier</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">S</span><span class="p">)</span>
-
-<span class="c1"># Save the optimal weights</span>
-<span class="n">raw_weights</span> <span class="o">=</span> <span class="n">ef</span><span class="o">.</span><span class="n">max_sharpe</span><span class="p">(</span><span class="n">risk_free_rate</span><span class="o">=</span><span class="mf">0.005</span><span class="p">)</span>
-
-<span class="c1"># clean it </span>
-<span class="n">cleaned_weights</span> <span class="o">=</span> <span class="n">ef</span><span class="o">.</span><span class="n">clean_weights</span><span class="p">()</span>
-
-<span class="c1"># saves to file:</span>
-<span class="c1">#ef.save_weights_to_file("weights.csv")  </span>
-
-
-
-<span class="nb">print</span><span class="p">(</span><span class="n">cleaned_weights</span><span class="p">)</span>
-<span class="n">ef</span><span class="o">.</span><span class="n">portfolio_performance</span><span class="p">(</span><span class="n">risk_free_rate</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># The following are a list of tickers</span>
+<span class="n">ticker_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"BA"</span><span class="p">,</span> <span class="s2">"AMZN"</span><span class="p">,</span> <span class="s2">"CVX"</span><span class="p">,</span> <span class="s2">"DIS"</span><span class="p">,</span> <span class="s2">"GOLD"</span><span class="p">,</span> <span class="s2">"HSY"</span><span class="p">,</span> <span class="s2">"INTC"</span><span class="p">,</span> <span class="s2">"K"</span><span class="p">,</span> <span class="s2">"KO"</span><span class="p">,</span> <span class="s2">"M"</span><span class="p">,</span> <span class="s2">"MMM"</span><span class="p">,</span> <span class="s2">"MSFT"</span><span class="p">,</span> <span class="s2">"NVDA"</span><span class="p">]</span>
+<span class="c1"># Instead of using a ticker, now we will pass the list as our input</span>
+<span class="n">main_data</span> <span class="o">=</span> <span class="n">yf</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">ticker_list</span><span class="p">,</span> <span class="n">start</span> <span class="o">=</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">interval</span> <span class="o">=</span> <span class="s2">"1mo"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -8404,22 +7584,1261 @@ NVDA: 	 23.10%
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>OrderedDict([('AMZN', 0.07954), ('BA', 0.0), ('CVX', 0.09198), ('DIS', 0.0), ('GOLD', 0.0), ('HSY', 0.52918), ('INTC', 0.0), ('K', 0.05322), ('KO', 0.03218), ('M', 0.0), ('MMM', 0.0), ('MSFT', 0.10896), ('NVDA', 0.10493), ('^W5000', 0.0)])
-Expected annual return: 13.7%
-Annual volatility: 70.5%
-Sharpe Ratio: 0.19
+<pre>[*********************100%***********************]  13 of 13 completed
 </pre>
 </div>
 </div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=9e9ee171">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># LEts have a look at the dataset</span>
+<span class="n">main_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[ ]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>(0.1369643274514806, 0.7048916314044404, 0.1872122203927321)</pre>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr>
+<th></th>
+<th colspan="10" halign="left">Adj Close</th>
+<th>...</th>
+<th colspan="10" halign="left">Volume</th>
+</tr>
+<tr>
+<th></th>
+<th>AMZN</th>
+<th>BA</th>
+<th>CVX</th>
+<th>DIS</th>
+<th>GOLD</th>
+<th>HSY</th>
+<th>INTC</th>
+<th>K</th>
+<th>KO</th>
+<th>M</th>
+<th>...</th>
+<th>DIS</th>
+<th>GOLD</th>
+<th>HSY</th>
+<th>INTC</th>
+<th>K</th>
+<th>KO</th>
+<th>M</th>
+<th>MMM</th>
+<th>MSFT</th>
+<th>NVDA</th>
+</tr>
+<tr>
+<th>Date</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>2000-01-01</th>
+<td>3.228125</td>
+<td>28.723930</td>
+<td>17.139805</td>
+<td>28.004887</td>
+<td>11.627259</td>
+<td>12.283645</td>
+<td>28.394407</td>
+<td>10.309633</td>
+<td>14.823807</td>
+<td>11.775007</td>
+<td>...</td>
+<td>247072276</td>
+<td>30307800</td>
+<td>27437600</td>
+<td>1406932200</td>
+<td>20080045</td>
+<td>224495200</td>
+<td>54676200</td>
+<td>68507000</td>
+<td>1274875200</td>
+<td>494145600</td>
+</tr>
+<tr>
+<th>2000-02-01</th>
+<td>3.443750</td>
+<td>23.842466</td>
+<td>15.307978</td>
+<td>26.221441</td>
+<td>11.582878</td>
+<td>12.699118</td>
+<td>32.430264</td>
+<td>10.761341</td>
+<td>12.549431</td>
+<td>10.378275</td>
+<td>...</td>
+<td>144199796</td>
+<td>41421300</td>
+<td>26855600</td>
+<td>965312200</td>
+<td>23470157</td>
+<td>189933800</td>
+<td>54626000</td>
+<td>66870400</td>
+<td>1334487600</td>
+<td>916084800</td>
+</tr>
+<tr>
+<th>2000-03-01</th>
+<td>3.350000</td>
+<td>24.490906</td>
+<td>19.106281</td>
+<td>31.812773</td>
+<td>11.139091</td>
+<td>14.168968</td>
+<td>37.876537</td>
+<td>11.076875</td>
+<td>12.113902</td>
+<td>11.951815</td>
+<td>...</td>
+<td>185073291</td>
+<td>34786700</td>
+<td>30930800</td>
+<td>1131350200</td>
+<td>22992184</td>
+<td>303736800</td>
+<td>50651600</td>
+<td>87122200</td>
+<td>2028187600</td>
+<td>1755216000</td>
+</tr>
+<tr>
+<th>2000-04-01</th>
+<td>2.759375</td>
+<td>25.705317</td>
+<td>17.594824</td>
+<td>33.644440</td>
+<td>11.937909</td>
+<td>13.224373</td>
+<td>36.405254</td>
+<td>10.431618</td>
+<td>12.240291</td>
+<td>9.618027</td>
+<td>...</td>
+<td>111137455</td>
+<td>35090400</td>
+<td>19653800</td>
+<td>1209578800</td>
+<td>18671158</td>
+<td>240129800</td>
+<td>44807000</td>
+<td>68960000</td>
+<td>2258146600</td>
+<td>648172800</td>
+</tr>
+<tr>
+<th>2000-05-01</th>
+<td>2.415625</td>
+<td>25.300518</td>
+<td>19.106281</td>
+<td>32.535797</td>
+<td>12.869864</td>
+<td>15.077240</td>
+<td>35.795193</td>
+<td>13.066406</td>
+<td>13.826995</td>
+<td>10.891005</td>
+<td>...</td>
+<td>110547998</td>
+<td>39834900</td>
+<td>17981400</td>
+<td>1145907800</td>
+<td>23087501</td>
+<td>229033600</td>
+<td>53502600</td>
+<td>51990800</td>
+<td>1344430800</td>
+<td>869558400</td>
+</tr>
+</tbody>
+</table>
+<p>5 rows × 78 columns</p>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=725a42af">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Mostly we are interested in the big column "Adj Close" </span>
+<span class="c1"># So I will crete a new dataset, which is a slice of "main_data" </span>
+
+<span class="n">stock_prices</span> <span class="o">=</span> <span class="n">main_data</span><span class="p">[</span><span class="s1">'Adj Close'</span><span class="p">]</span>
+<span class="n">stock_prices</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">n</span> <span class="o">=</span> <span class="mi">7</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[ ]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>AMZN</th>
+<th>BA</th>
+<th>CVX</th>
+<th>DIS</th>
+<th>GOLD</th>
+<th>HSY</th>
+<th>INTC</th>
+<th>K</th>
+<th>KO</th>
+<th>M</th>
+<th>MMM</th>
+<th>MSFT</th>
+<th>NVDA</th>
+</tr>
+<tr>
+<th>Date</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>2000-01-01</th>
+<td>3.228125</td>
+<td>28.723930</td>
+<td>17.139805</td>
+<td>28.004887</td>
+<td>11.627259</td>
+<td>12.283645</td>
+<td>28.394407</td>
+<td>10.309633</td>
+<td>14.823807</td>
+<td>11.775007</td>
+<td>23.799902</td>
+<td>30.283478</td>
+<td>0.708314</td>
+</tr>
+<tr>
+<th>2000-02-01</th>
+<td>3.443750</td>
+<td>23.842466</td>
+<td>15.307978</td>
+<td>26.221441</td>
+<td>11.582878</td>
+<td>12.699118</td>
+<td>32.430264</td>
+<td>10.761341</td>
+<td>12.549431</td>
+<td>10.378275</td>
+<td>22.417660</td>
+<td>27.653498</td>
+<td>1.223127</td>
+</tr>
+<tr>
+<th>2000-03-01</th>
+<td>3.350000</td>
+<td>24.490906</td>
+<td>19.106281</td>
+<td>31.812773</td>
+<td>11.139091</td>
+<td>14.168968</td>
+<td>37.876537</td>
+<td>11.076875</td>
+<td>12.113902</td>
+<td>11.951815</td>
+<td>22.658825</td>
+<td>32.874763</td>
+<td>1.614611</td>
+</tr>
+<tr>
+<th>2000-04-01</th>
+<td>2.759375</td>
+<td>25.705317</td>
+<td>17.594824</td>
+<td>33.644440</td>
+<td>11.937909</td>
+<td>13.224373</td>
+<td>36.405254</td>
+<td>10.431618</td>
+<td>12.240291</td>
+<td>9.618027</td>
+<td>22.163111</td>
+<td>21.581335</td>
+<td>1.703300</td>
+</tr>
+<tr>
+<th>2000-05-01</th>
+<td>2.415625</td>
+<td>25.300518</td>
+<td>19.106281</td>
+<td>32.535797</td>
+<td>12.869864</td>
+<td>15.077240</td>
+<td>35.795193</td>
+<td>13.066406</td>
+<td>13.826995</td>
+<td>10.891005</td>
+<td>21.939230</td>
+<td>19.357439</td>
+<td>2.181084</td>
+</tr>
+<tr>
+<th>2000-06-01</th>
+<td>1.815625</td>
+<td>27.180988</td>
+<td>17.653696</td>
+<td>29.932936</td>
+<td>12.981661</td>
+<td>14.168630</td>
+<td>38.388420</td>
+<td>12.911996</td>
+<td>14.879401</td>
+<td>9.547308</td>
+<td>21.373287</td>
+<td>24.752775</td>
+<td>2.429532</td>
+</tr>
+<tr>
+<th>2000-07-01</th>
+<td>1.506250</td>
+<td>31.731459</td>
+<td>16.440578</td>
+<td>29.740133</td>
+<td>11.385468</td>
+<td>13.511317</td>
+<td>38.334579</td>
+<td>11.257315</td>
+<td>15.934709</td>
+<td>6.806873</td>
+<td>23.191954</td>
+<td>21.600664</td>
+<td>2.293363</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=296e09e1">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<hr/>
+<h2 id="Descriptive-Statistics-for-Stock-Returns">Descriptive Statistics for Stock Returns<a class="anchor-link" href="#Descriptive-Statistics-for-Stock-Returns">¶</a></h2><p>In order to find the descriptive stats for the list of stocks we picked, we need to calculate each period's return. Luckily, <code>pandas</code> has a useful function <code>pct_change</code>. We can apply it to our whole dataset <code>stock_prices</code>. Becuase we are apllying it to the whole table, the function automatically measures the % change <em>for each column</em>:</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=9945b064">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Take % changes of each row for the table "stock_prices" </span>
+<span class="c1"># Save the results in a new variable "stock_returns"</span>
+<span class="n">stock_returns</span> <span class="o">=</span> <span class="n">stock_prices</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span>
+
+<span class="c1"># Lets see the new table</span>
+<span class="n">stock_returns</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[ ]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>AMZN</th>
+<th>BA</th>
+<th>CVX</th>
+<th>DIS</th>
+<th>GOLD</th>
+<th>HSY</th>
+<th>INTC</th>
+<th>K</th>
+<th>KO</th>
+<th>M</th>
+<th>MMM</th>
+<th>MSFT</th>
+<th>NVDA</th>
+</tr>
+<tr>
+<th>Date</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>2000-01-01</th>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<th>2000-02-01</th>
+<td>0.066796</td>
+<td>-0.169944</td>
+<td>-0.106876</td>
+<td>-0.063683</td>
+<td>-0.003817</td>
+<td>0.033823</td>
+<td>0.142136</td>
+<td>0.043814</td>
+<td>-0.153427</td>
+<td>-0.118618</td>
+<td>-0.058078</td>
+<td>-0.086845</td>
+<td>0.726813</td>
+</tr>
+<tr>
+<th>2000-03-01</th>
+<td>-0.027223</td>
+<td>0.027197</td>
+<td>0.248126</td>
+<td>0.213235</td>
+<td>-0.038314</td>
+<td>0.115744</td>
+<td>0.167938</td>
+<td>0.029321</td>
+<td>-0.034705</td>
+<td>0.151619</td>
+<td>0.010758</td>
+<td>0.188810</td>
+<td>0.320068</td>
+</tr>
+<tr>
+<th>2000-04-01</th>
+<td>-0.176306</td>
+<td>0.049586</td>
+<td>-0.079108</td>
+<td>0.057576</td>
+<td>0.071713</td>
+<td>-0.066666</td>
+<td>-0.038844</td>
+<td>-0.058253</td>
+<td>0.010433</td>
+<td>-0.195266</td>
+<td>-0.021877</td>
+<td>-0.343529</td>
+<td>0.054929</td>
+</tr>
+<tr>
+<th>2000-05-01</th>
+<td>-0.124575</td>
+<td>-0.015748</td>
+<td>0.085904</td>
+<td>-0.032952</td>
+<td>0.078067</td>
+<td>0.140110</td>
+<td>-0.016758</td>
+<td>0.252577</td>
+<td>0.129630</td>
+<td>0.132353</td>
+<td>-0.010102</td>
+<td>-0.103047</td>
+<td>0.280505</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=7cfaf952">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Now we can find the descriptive stats for the returns by using pandas handy tool "describe"</span>
+<span class="n">return_stats</span> <span class="o">=</span> <span class="n">stock_returns</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+
+<span class="n">return_stats</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[ ]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>AMZN</th>
+<th>BA</th>
+<th>CVX</th>
+<th>DIS</th>
+<th>GOLD</th>
+<th>HSY</th>
+<th>INTC</th>
+<th>K</th>
+<th>KO</th>
+<th>M</th>
+<th>MMM</th>
+<th>MSFT</th>
+<th>NVDA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>count</th>
+<td>287.000000</td>
+<td>287.000000</td>
+<td>287.000000</td>
+<td>287.000000</td>
+<td>287.000000</td>
+<td>287.000000</td>
+<td>287.000000</td>
+<td>287.000000</td>
+<td>287.000000</td>
+<td>287.000000</td>
+<td>287.000000</td>
+<td>287.000000</td>
+<td>287.000000</td>
+</tr>
+<tr>
+<th>mean</th>
+<td>0.021791</td>
+<td>0.012425</td>
+<td>0.009857</td>
+<td>0.006993</td>
+<td>0.008019</td>
+<td>0.011105</td>
+<td>0.006905</td>
+<td>0.007126</td>
+<td>0.006123</td>
+<td>0.010586</td>
+<td>0.007103</td>
+<td>0.012066</td>
+<td>0.037451</td>
+</tr>
+<tr>
+<th>std</th>
+<td>0.129926</td>
+<td>0.095598</td>
+<td>0.069003</td>
+<td>0.076331</td>
+<td>0.114357</td>
+<td>0.057571</td>
+<td>0.097305</td>
+<td>0.049604</td>
+<td>0.050752</td>
+<td>0.129830</td>
+<td>0.060703</td>
+<td>0.081098</td>
+<td>0.174042</td>
+</tr>
+<tr>
+<th>min</th>
+<td>-0.411552</td>
+<td>-0.454664</td>
+<td>-0.214625</td>
+<td>-0.267794</td>
+<td>-0.381056</td>
+<td>-0.177236</td>
+<td>-0.444733</td>
+<td>-0.138635</td>
+<td>-0.172743</td>
+<td>-0.628874</td>
+<td>-0.157037</td>
+<td>-0.343529</td>
+<td>-0.486551</td>
+</tr>
+<tr>
+<th>25%</th>
+<td>-0.048718</td>
+<td>-0.042805</td>
+<td>-0.029320</td>
+<td>-0.034121</td>
+<td>-0.065293</td>
+<td>-0.025150</td>
+<td>-0.047196</td>
+<td>-0.020944</td>
+<td>-0.024000</td>
+<td>-0.061762</td>
+<td>-0.028618</td>
+<td>-0.037006</td>
+<td>-0.054362</td>
+</tr>
+<tr>
+<th>50%</th>
+<td>0.021677</td>
+<td>0.015899</td>
+<td>0.008623</td>
+<td>0.005748</td>
+<td>0.007592</td>
+<td>0.008660</td>
+<td>0.007672</td>
+<td>0.009468</td>
+<td>0.008546</td>
+<td>0.011221</td>
+<td>0.010560</td>
+<td>0.017244</td>
+<td>0.030835</td>
+</tr>
+<tr>
+<th>75%</th>
+<td>0.087617</td>
+<td>0.070994</td>
+<td>0.046279</td>
+<td>0.050940</td>
+<td>0.072783</td>
+<td>0.044363</td>
+<td>0.062263</td>
+<td>0.035984</td>
+<td>0.038312</td>
+<td>0.077279</td>
+<td>0.039402</td>
+<td>0.055028</td>
+<td>0.122156</td>
+</tr>
+<tr>
+<th>max</th>
+<td>0.621776</td>
+<td>0.459312</td>
+<td>0.269666</td>
+<td>0.248734</td>
+<td>0.426362</td>
+<td>0.275953</td>
+<td>0.337428</td>
+<td>0.252577</td>
+<td>0.141928</td>
+<td>0.644122</td>
+<td>0.213949</td>
+<td>0.407781</td>
+<td>0.826239</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ec3fd6ec">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>The new table <code>return_stats</code> is like any other pandas table. I can add, subtract, or delete any row or column. So, I would like to measure the <strong>Sharpe Ratio</strong> for each stock. Recall, the Sharpe Ratio is:
+$$Sharpe_{x}  = \frac{Expected \,\, Return_{x} - Risk-free}{Stock \,\, Risk} =  \frac{E(R_{x})- R_{f}}{\sigma_{x}}$$</p>
+<p>Let's apply this by first assuming the risk-free rate is 0.5%</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=02321574">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># first, let me flip this table (make the row a column, and a column a row)</span>
+<span class="n">return_stats_flipped</span> <span class="o">=</span> <span class="n">return_stats</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+<span class="n">return_stats_flipped</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[ ]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>count</th>
+<th>mean</th>
+<th>std</th>
+<th>min</th>
+<th>25%</th>
+<th>50%</th>
+<th>75%</th>
+<th>max</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>AMZN</th>
+<td>287.0</td>
+<td>0.021791</td>
+<td>0.129926</td>
+<td>-0.411552</td>
+<td>-0.048718</td>
+<td>0.021677</td>
+<td>0.087617</td>
+<td>0.621776</td>
+</tr>
+<tr>
+<th>BA</th>
+<td>287.0</td>
+<td>0.012425</td>
+<td>0.095598</td>
+<td>-0.454664</td>
+<td>-0.042805</td>
+<td>0.015899</td>
+<td>0.070994</td>
+<td>0.459312</td>
+</tr>
+<tr>
+<th>CVX</th>
+<td>287.0</td>
+<td>0.009857</td>
+<td>0.069003</td>
+<td>-0.214625</td>
+<td>-0.029320</td>
+<td>0.008623</td>
+<td>0.046279</td>
+<td>0.269666</td>
+</tr>
+<tr>
+<th>DIS</th>
+<td>287.0</td>
+<td>0.006993</td>
+<td>0.076331</td>
+<td>-0.267794</td>
+<td>-0.034121</td>
+<td>0.005748</td>
+<td>0.050940</td>
+<td>0.248734</td>
+</tr>
+<tr>
+<th>GOLD</th>
+<td>287.0</td>
+<td>0.008019</td>
+<td>0.114357</td>
+<td>-0.381056</td>
+<td>-0.065293</td>
+<td>0.007592</td>
+<td>0.072783</td>
+<td>0.426362</td>
+</tr>
+<tr>
+<th>HSY</th>
+<td>287.0</td>
+<td>0.011105</td>
+<td>0.057571</td>
+<td>-0.177236</td>
+<td>-0.025150</td>
+<td>0.008660</td>
+<td>0.044363</td>
+<td>0.275953</td>
+</tr>
+<tr>
+<th>INTC</th>
+<td>287.0</td>
+<td>0.006905</td>
+<td>0.097305</td>
+<td>-0.444733</td>
+<td>-0.047196</td>
+<td>0.007672</td>
+<td>0.062263</td>
+<td>0.337428</td>
+</tr>
+<tr>
+<th>K</th>
+<td>287.0</td>
+<td>0.007126</td>
+<td>0.049604</td>
+<td>-0.138635</td>
+<td>-0.020944</td>
+<td>0.009468</td>
+<td>0.035984</td>
+<td>0.252577</td>
+</tr>
+<tr>
+<th>KO</th>
+<td>287.0</td>
+<td>0.006123</td>
+<td>0.050752</td>
+<td>-0.172743</td>
+<td>-0.024000</td>
+<td>0.008546</td>
+<td>0.038312</td>
+<td>0.141928</td>
+</tr>
+<tr>
+<th>M</th>
+<td>287.0</td>
+<td>0.010586</td>
+<td>0.129830</td>
+<td>-0.628874</td>
+<td>-0.061762</td>
+<td>0.011221</td>
+<td>0.077279</td>
+<td>0.644122</td>
+</tr>
+<tr>
+<th>MMM</th>
+<td>287.0</td>
+<td>0.007103</td>
+<td>0.060703</td>
+<td>-0.157037</td>
+<td>-0.028618</td>
+<td>0.010560</td>
+<td>0.039402</td>
+<td>0.213949</td>
+</tr>
+<tr>
+<th>MSFT</th>
+<td>287.0</td>
+<td>0.012066</td>
+<td>0.081098</td>
+<td>-0.343529</td>
+<td>-0.037006</td>
+<td>0.017244</td>
+<td>0.055028</td>
+<td>0.407781</td>
+</tr>
+<tr>
+<th>NVDA</th>
+<td>287.0</td>
+<td>0.037451</td>
+<td>0.174042</td>
+<td>-0.486551</td>
+<td>-0.054362</td>
+<td>0.030835</td>
+<td>0.122156</td>
+<td>0.826239</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=4834d185">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># I will assume the risk free rate is 0.005</span>
+<span class="n">r_free</span> <span class="o">=</span> <span class="mf">0.005</span>
+<span class="n">return_stats_flipped</span><span class="p">[</span><span class="s1">'Sharpe'</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">return_stats_flipped</span><span class="p">[</span><span class="s1">'mean'</span><span class="p">]</span> <span class="o">-</span> <span class="n">r_free</span><span class="p">)</span><span class="o">/</span><span class="n">return_stats_flipped</span><span class="p">[</span><span class="s1">'std'</span><span class="p">]</span>
+
+<span class="n">return_stats_flipped</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[ ]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>count</th>
+<th>mean</th>
+<th>std</th>
+<th>min</th>
+<th>25%</th>
+<th>50%</th>
+<th>75%</th>
+<th>max</th>
+<th>Sharpe</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>AMZN</th>
+<td>287.0</td>
+<td>0.021791</td>
+<td>0.129926</td>
+<td>-0.411552</td>
+<td>-0.048718</td>
+<td>0.021677</td>
+<td>0.087617</td>
+<td>0.621776</td>
+<td>0.129233</td>
+</tr>
+<tr>
+<th>BA</th>
+<td>287.0</td>
+<td>0.012425</td>
+<td>0.095598</td>
+<td>-0.454664</td>
+<td>-0.042805</td>
+<td>0.015899</td>
+<td>0.070994</td>
+<td>0.459312</td>
+<td>0.077671</td>
+</tr>
+<tr>
+<th>CVX</th>
+<td>287.0</td>
+<td>0.009857</td>
+<td>0.069003</td>
+<td>-0.214625</td>
+<td>-0.029320</td>
+<td>0.008623</td>
+<td>0.046279</td>
+<td>0.269666</td>
+<td>0.070391</td>
+</tr>
+<tr>
+<th>DIS</th>
+<td>287.0</td>
+<td>0.006993</td>
+<td>0.076331</td>
+<td>-0.267794</td>
+<td>-0.034121</td>
+<td>0.005748</td>
+<td>0.050940</td>
+<td>0.248734</td>
+<td>0.026107</td>
+</tr>
+<tr>
+<th>GOLD</th>
+<td>287.0</td>
+<td>0.008019</td>
+<td>0.114357</td>
+<td>-0.381056</td>
+<td>-0.065293</td>
+<td>0.007592</td>
+<td>0.072783</td>
+<td>0.426362</td>
+<td>0.026397</td>
+</tr>
+<tr>
+<th>HSY</th>
+<td>287.0</td>
+<td>0.011105</td>
+<td>0.057571</td>
+<td>-0.177236</td>
+<td>-0.025150</td>
+<td>0.008660</td>
+<td>0.044363</td>
+<td>0.275953</td>
+<td>0.106048</td>
+</tr>
+<tr>
+<th>INTC</th>
+<td>287.0</td>
+<td>0.006905</td>
+<td>0.097305</td>
+<td>-0.444733</td>
+<td>-0.047196</td>
+<td>0.007672</td>
+<td>0.062263</td>
+<td>0.337428</td>
+<td>0.019574</td>
+</tr>
+<tr>
+<th>K</th>
+<td>287.0</td>
+<td>0.007126</td>
+<td>0.049604</td>
+<td>-0.138635</td>
+<td>-0.020944</td>
+<td>0.009468</td>
+<td>0.035984</td>
+<td>0.252577</td>
+<td>0.042864</td>
+</tr>
+<tr>
+<th>KO</th>
+<td>287.0</td>
+<td>0.006123</td>
+<td>0.050752</td>
+<td>-0.172743</td>
+<td>-0.024000</td>
+<td>0.008546</td>
+<td>0.038312</td>
+<td>0.141928</td>
+<td>0.022124</td>
+</tr>
+<tr>
+<th>M</th>
+<td>287.0</td>
+<td>0.010586</td>
+<td>0.129830</td>
+<td>-0.628874</td>
+<td>-0.061762</td>
+<td>0.011221</td>
+<td>0.077279</td>
+<td>0.644122</td>
+<td>0.043027</td>
+</tr>
+<tr>
+<th>MMM</th>
+<td>287.0</td>
+<td>0.007103</td>
+<td>0.060703</td>
+<td>-0.157037</td>
+<td>-0.028618</td>
+<td>0.010560</td>
+<td>0.039402</td>
+<td>0.213949</td>
+<td>0.034641</td>
+</tr>
+<tr>
+<th>MSFT</th>
+<td>287.0</td>
+<td>0.012066</td>
+<td>0.081098</td>
+<td>-0.343529</td>
+<td>-0.037006</td>
+<td>0.017244</td>
+<td>0.055028</td>
+<td>0.407781</td>
+<td>0.087124</td>
+</tr>
+<tr>
+<th>NVDA</th>
+<td>287.0</td>
+<td>0.037451</td>
+<td>0.174042</td>
+<td>-0.486551</td>
+<td>-0.054362</td>
+<td>0.030835</td>
+<td>0.122156</td>
+<td>0.826239</td>
+<td>0.186455</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=406d65d4">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<hr/>
+<h2 id="Exporting-Datasets"><em>Exporting Datasets</em><a class="anchor-link" href="#Exporting-Datasets">¶</a></h2><p>The <code>pandas</code> package offers its users a way to export their tables and datasets to any type of file. It also offers options to import files into a new dataset. In the following code I will export the 2 tables I have created earlier (<code>return_stats_flipped</code>, <code>stock_returns</code>) to an <em>Excel</em> file. <em>The produced Excel file will be located in the same folder where this Jupyter Notebook exists.</em></p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=d63053e4">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">stock_returns</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s2">"all_stock_returns.xlsx"</span><span class="p">)</span>
+<span class="n">return_stats_flipped</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s2">"return_stats.xlsx"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=59ca036c">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>

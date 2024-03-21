@@ -8,6 +8,8 @@ author_profile: true
 
 * [Dealing with Stock Data (FINA423 Course)](https://ieyada.github.io/files/Stock_Data.html)
 
+* [Creating Descriptive Statistics for Stock Returns (FINA423 Course)](https://ieyada.github.io/files/Stock_Data_discriptive_stats.html)
+
 * [Portfolio Construction & Measuring Risk (FINA423 Course)](https://ieyada.github.io/files/Portfolio_Risk.html)
 
 * [Portfolio Optimization (FINA423 Course)](https://ieyada.github.io/files/Portfolio_Opt.html)
