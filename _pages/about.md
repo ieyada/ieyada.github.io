@@ -7,8 +7,8 @@ redirect_from:
   - /about/
   - /about.html
 ---
- <p>&nbsp;</p> 
- 
+ <p>&nbsp;</p>
+
 Welcome to my website!
 
 
