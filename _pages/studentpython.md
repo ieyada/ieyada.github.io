@@ -6,7 +6,7 @@ author_profile: true
 
 ## *For Finance Students*
 
-* [Descriptive Analysis of Security Returns](https://ieyada.github.io/files/descriptive_analysis.pdf)
+* [Descriptive Analysis of Security Returns](https://ieyada.github.io/files/descriptive_analysis.html)
 
 * [Portfolio Construction & Measuring Risk](https://ieyada.github.io/files/Portfolio_Risk.html)
 
