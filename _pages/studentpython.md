@@ -6,15 +6,13 @@ author_profile: true
 
 ## *For Finance Students*
 
-* [Dealing with Stock Data (FINA423 Course)](https://ieyada.github.io/files/Stock_Data.html)
+* [Descriptive Analysis of Security Returns](https://ieyada.github.io/files/descriptive_analysis.pdf)
 
-* [Creating Descriptive Statistics for Stock Returns (FINA423 Course)](https://ieyada.github.io/files/Stock_Data_discriptive_stats.html)
+* [Portfolio Construction & Measuring Risk](https://ieyada.github.io/files/Portfolio_Risk.html)
 
-* [Portfolio Construction & Measuring Risk (FINA423 Course)](https://ieyada.github.io/files/Portfolio_Risk.html)
+* [Portfolio Optimization](https://ieyada.github.io/files/Portfolio_Opt.html)
 
-* [Portfolio Optimization (FINA423 Course)](https://ieyada.github.io/files/Portfolio_Opt.html)
-
-* [Finding the Efficient Frontier (FINA423 Course)](https://ieyada.github.io/files/Efficient_Frontier.html)
+* [Finding the Efficient Frontier](https://ieyada.github.io/files/Efficient_Frontier.html)
 
 ## *For Instructors*
 
