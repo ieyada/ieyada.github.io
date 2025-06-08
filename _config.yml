@@ -3,24 +3,107 @@
 # This config file is meant for settings that affect your entire site, values
 # which you are expected to set up once and rarely need to edit after that.
 # For technical reasons, this file is *NOT* reloaded automatically when you use
-# `jekyll serve`. If you change this file, please restart the server process.
+# `jekyll serve -l -H localhost`. If you change this file, please restart the 
+# server process.
 
-minimal_mistakes_skin    : "dirt" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum" "sunrise"
-# Site Settings
-locale                   : "en-UK"
+# Basic Site Settings
+locale                   : "en-US"
+site_theme               : "default"
 title                    : "Home"
 title_separator          : "-"
 name                     : &name "Eyad Alhudhaif"
-description              : &description "Academic Website"
-url                      : https://ieyada.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+description              : &description "personal description"
+url                      : https://ieyada.github.io/home # the base hostname & protocol for your site e.g. "https://[your GitHub username].github.io" or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
-repository               : "ieyada/ieyada.github.io"
+repository               : "ieyada/ieyada.github.io/home"
+
+# Site Author - The following control what appear as part of the author content on the side bar.
+#               If a field is blank the icon and link will not appear, otherwise it will be shown.
+#               Additional customization can be done by editing /_includes/author-profile.html
+author:
+  # Biographic information
+  avatar           : "personal.jpeg" # filename of avatar image placed in /images/, e.g. "avatar.png"
+  name             : "Eyad Alhudhaif"
+  pronouns         : # example: "she/her"  
+  bio              : "Assistant Professor of Finance"
+  location         : "Riyadh, Saudi Arabia"
+  employer         : "King Saud University"
+  uri              : # URL
+  email            : "ealhudhaif@ksu.edu.sa" 
+
+  # Academic websites
+  academia         : # URL
+  arxiv            : # URL - Update with the correct link to your profile
+  googlescholar    : "https://scholar.google.com/citations?user=w-Wdm7gAAAAJ&hl=en"
+  impactstory      : # URL
+  orcid            : "https://orcid.org/0000-0002-9447-712X"
+  semantic         : # URL
+  pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
+  researchgate     : # URL
+  scopus           : # URL
+
+  # Repositories and software development
+  bitbucket        : # Username - Update with your username on the site
+  codepen          : # Username
+  dribbble         : # Username
+  github           : "ieyada"
+  kaggle           : # Username  
+  stackoverflow    : # User number or user number and name (i.e., use "1" or "1/jeff-atwood")    
+
+  # Social media
+  bluesky          : #"bsky.app" # Replace this with you Bluesky username
+  facebook         : # Username
+  flickr           : # Username
+  foursquare       : # Username
+  goodreads        : # Username
+  google_plus      : # Username
+  keybase          : # Username
+  instagram        : # Username
+  lastfm           : # Username
+  linkedin         : "Eyad-alhudhaif"
+  mastodon         : # URL
+  medium           : # URL
+  pinterest        : # Username
+  soundcloud       : # Username
+  steam            : # Username
+  telegram         : # URL
+  tumblr           : # Username
+  twitter          : "iEya_d"
+  vine             : # Username
+  weibo            : # Username
+  wikipedia        : # Username
+  xing             : # Username
+  youtube          : # Username
+  zhihu            : # Username
+
+# Publication Category - The following is a list of publication categories and their headings
+publication_category:
+  books:
+    title: 'Books'
+  manuscripts:
+    title: 'Journal Articles' 
+  workingpapers:
+    title: 'Working Papers'   
+  conferences:
+    title: 'Conference Papers'
+
+# Python Category - The following is a list of python categories and their headings
+python_category:
+  applications:
+    title: 'Applications for Practitioners'
+  research:
+    title: 'Research Methodologies' 
+  other:
+    title: 'Others'   
+
+
+# Site Settings
 teaser                   :  # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
 breadcrumbs              : false # true, false (default)
 words_per_minute         : 160
 future                   : true
 read_more                : "disabled" # if enabled, adds "Read more" links to excerpts
-talkmap_link             : false #change to true to add link to talkmap on talks page
+talkmap_link             : false      #change to true to add link to talkmap on talks page
 comments:
   provider               : # false (default), "disqus", "discourse", "facebook", "google-plus", "staticman", "custom"
   disqus:
@@ -48,7 +131,9 @@ staticman:
       options:
         format           : "iso8601" # "iso8601" (default), "timestamp-seconds", "timestamp-milliseconds"
 atom_feed:
+  hide                   : true     # change to true to hide the RSS feed in the footer
   path                   : # blank (default) uses feed.xml
+
 
 # SEO Related
 google_site_verification :
@@ -56,9 +141,10 @@ bing_site_verification   :
 alexa_site_verification  :
 yandex_site_verification :
 
+
 # Social Sharing
 twitter:
-  username               : &iEyad_d
+  username               : &iEya_d
 facebook:
   username               :
   app_id                 :
@@ -68,52 +154,15 @@ og_image                 :  # Open Graph/Twitter default site image
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
   type                   : # Person or Organization (defaults to Person)
-  name                   : 
-  links:
-    - ""
+  name                   : # If the user or organization name differs from the site's name
+  links: # An array of links to social media profiles
+
 
 # Analytics
 analytics:
-  provider               :  "google-universal" # false (default), "google", "google-universal", "custom"
+  provider               :  "google-analytics-4" # false (default), "google", "google-universal", "google-analytics-4", "custom"
   google:
-    tracking_id          :
-
-
-# Site Author
-author:
-  name             : "Eyad Alhudhaif"
-  avatar           : "personal.jpeg"
-  bio              : "Assistant Professor of Finance"
-  location         : King Saud University
-  employer         :
-  googlescholar    : "https://scholar.google.com/citations?user=w-Wdm7gAAAAJ&hl=en"
-  email            : "ieyada@live.com"
-  researchgate     : 
-  uri              : 
-  bitbucket        :
-  codepen          :
-  dribbble         :
-  flickr           :
-  facebook         :
-  foursquare       :
-  github           : "ieyada"
-  google_plus      :
-  keybase          :
-  instagram        :
-  lastfm           :
-  linkedin         : "Eyad-alhudhaif"
-  orcid            : "https://orcid.org/0000-0002-9447-712X"
-  pinterest        :
-  soundcloud       :
-  stackoverflow    : # http://stackoverflow.com/users/123456/username
-  steam            :
-  tumblr           :
-  twitter          : "iEya_d"
-  vine             :
-  weibo            :
-  xing             :
-  youtube          :
-  wikipedia        :
+    tracking_id          : G-PE5HQM7K4Z
 
 
 # Reading Files
@@ -126,24 +175,28 @@ exclude:
   - "*.sublime-workspace"
   - .asset-cache
   - .bundle
+  - .github
   - .jekyll-assets-cache
   - .sass-cache
-  - assets/js/plugins
   - assets/js/_main.js
+  - assets/js/plugins
   - assets/js/vendor
-  - Capfile
   - CHANGELOG
+  - Capfile
   - config
+  - Dockerfile
   - Gemfile
   - Gruntfile.js
   - gulpfile.js
   - LICENSE
+  - local
   - log
   - node_modules
-  - package.json
+  - package.json*
   - Rakefile
   - README
   - tmp
+  - vendor
 keep_files:
   - .git
   - .svn
@@ -171,29 +224,23 @@ kramdown:
   enable_coderay: false
 
 
-# Collections
+# These settings control the types of collections used by the template
 collections:
-  datasets:
-    output: true
-    permalink: /:collection/:path/
-  workingpapers:
-    output: true
-    permalink: /:collection/:path/
-  publications:
-    output: true
-    permalink: /:collection/:path/
   teaching:
     output: true
     permalink: /:collection/:path/
-  portfolio:
+  papers:
     output: true
     permalink: /:collection/:path/
   talks:
     output: true
     permalink: /:collection/:path/
+  python:
+    output: true
+    permalink: /:collection/:path/
 
 
-# Defaults
+# These settings control how pages and collections are included in the site
 defaults:
   # _posts
   - scope:
@@ -213,15 +260,6 @@ defaults:
     values:
       layout: single
       author_profile: true
-  # _datasets
-  - scope:
-      path: ""
-      type: datasets
-    values:
-      layout: single
-      author_profile: true
-      share: true
-      comments: true
   # _teaching
   - scope:
       path: ""
@@ -231,33 +269,23 @@ defaults:
       author_profile: true
       share: true
       comments: true
-  # _workingpapers
+  # _papers
   - scope:
       path: ""
-      type: workingpapers
+      type: papers
     values:
       layout: single
       author_profile: true
       share: true
       comments: true
-  # _publications
+  # _python
   - scope:
       path: ""
-      type: publications
+      type: python
     values:
       layout: single
       author_profile: true
       share: true
-      comments: true
-  # _portfolio
-  - scope:
-      path: ""
-      type: portfolio
-    values:
-      layout: single
-      author_profile: true
-      share: true
-      comment: true
   # _talks
   - scope:
       path: ""
@@ -266,6 +294,7 @@ defaults:
       layout: talk
       author_profile: true
       share: true
+
 
 # Sass/SCSS
 sass:
@@ -277,24 +306,27 @@ sass:
 permalink: /:categories/:title/
 # paginate: 5 # amount of posts to show
 # paginate_path: /page:num/
-timezone: America/New_York # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone: Asia/Riyadh # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 
 # Plugins
 plugins:
+  - jekyll-feed
+  - jekyll-gist
   - jekyll-paginate
   - jekyll-sitemap
-  - jekyll-gist
-  - jekyll-feed
   - jekyll-redirect-from
-  - jekyll-seo-tag
-# mimic GitHub Pages with --safe
+  - jemoji
+
+# Mimic GitHub Pages with --safe
 whitelist:
+  - jekyll-feed
+  - jekyll-gist
   - jekyll-paginate
   - jekyll-sitemap
-  - jekyll-gist
-  - jekyll-feed
+  - jekyll-redirect-from
   - jemoji
+
 
 # Archives
 #  Type

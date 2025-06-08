@@ -1,32 +1,35 @@
-# main links links
+# The following is the order of the links in the header of the website.
+#
+# Changing the order here will adjust the order and you can also add additional
+# links. Removing a link prevents it from showing in the header, but does not
+# prevent it from being included in the site.
+#
+# NOTE that only one of the CV options should be selected, the first is for the
+#      Markdown formatted page while the second is generated using JSON.
+
 main:
+  - title: "CV"
+    url: /files/official_cv.pdf
 
   #- title: "Talks"
   #  url: /talks/    
 
+  - title: "Research Papers"
+    url: /papers/
+
+
+  - title: "Teaching"
+    url: /teaching/    
     
-  #- title: "Portfolio"
-  #  url: /portfolio/
-  - title: "Curriculum Vitae"
-    url: "https://ieyada.github.io/files/Official_cv.pdf"  
+  - title: "Python Resources"
+    url: /python/  
 
   - title: "Data"
-    url: /datasets/
-
-  - title: "Research"
-    url: /research/
+    url: /datasets/  
+  #- title: "Blog Posts"
+  #  url: /year-archive/
     
-  - title: "Teaching"
-    url: /teaching/
-
-  - title: "Python Resources"
-    url: /studentpython/
-  
-  
-  - title: "Blog"
-    # url: /year-archive/
-    #url: "https://medium.com/@anebz"
-  
     
-  #- title: "Guide"
-  #  url: /markdown/
+  # - title: "CV"
+  #   url: /cv-json/
+  
