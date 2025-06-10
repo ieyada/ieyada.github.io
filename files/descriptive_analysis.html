@@ -7312,6 +7312,7 @@ a.anchor-link {
                     processEnvironments: true
                 },
                 displayAlign: 'center',
+                messageStyle: 'none',
                 CommonHTML: {
                     linebreaks: {
                     automatic: true
@@ -7533,17 +7534,17 @@ a.anchor-link {
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># This package is used for downloading stock data from Yahoo Finance</span>
 <span class="c1"># we will import it in our project and give it a nickname (yf)</span>
-<span class="kn">import</span> <span class="nn">yfinance</span> <span class="k">as</span> <span class="nn">yf</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">yfinance</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">yf</span>
 <span class="c1"># This package is important so we can analyze data in an excel like objects</span>
 <span class="c1"># we will nickname it (pd)</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="c1"># This library will help us use dates and times</span>
-<span class="kn">import</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dt</span>
 <span class="c1"># The following package allows us to draw figures and charts</span>
-<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpl</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="c1"># Numpy is a package that helps python understand math</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 </pre></div>
 </div>
 </div>
@@ -7566,10 +7567,10 @@ Float, which are numbers with fractions, such as <code>16.001</code>, <code>-11.
 Then there are data types than can be defined by the user or a package imported in the program. One such example we will use later is a date-time data.</p>
 <h3 id="Variables">Variables<a class="anchor-link" href="#Variables">¶</a></h3><p>Variables are names given to data items that may take on one or more values during
 a program’s runtime. Variable names have to follow some rules:<br/>
-    - It cannot begin with a number<br/>
-    - It must be a single word<br/>
-    - It must consist of letters and _ symbols only<br/>
-    - Variables in Python which start with _ (underscore) are considered as “Un-useful”</p>
+- It cannot begin with a number<br/>
+- It must be a single word<br/>
+- It must consist of letters and _ symbols only<br/>
+- Variables in Python which start with _ (underscore) are considered as “Un-useful”</p>
 <p>Some examples:</p>
 </div>
 </div>
@@ -9757,7 +9758,7 @@ $$Normalized \ Price_{t} = \frac{Price_{t}}{Price_{t=0}}, \quad \quad for \: t \
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>I can do the same steps in the above cell for all tickers. But this will take time and a lot of repetitive code. Alternatively, *<strong>I can run through all the tickers using a loop!</strong>*</p>
+<p>I can do the same steps in the above cell for all tickers. But this will take time and a lot of repetitive code. Alternatively, <em><strong>I can run through all the tickers using a loop!</strong></em></p>
 <p>But before I do that, first let me drop the column I just created:</p>
 </div>
 </div>
@@ -10098,7 +10099,7 @@ $$Normalized \ Price_{t} = \frac{Price_{t}}{Price_{t=0}}, \quad \quad for \: t \
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>*<strong>It is now clear that the S&amp;P500 performed better than the other 3 indices historically!</strong>*</p>
+<p><em><strong>It is now clear that the S&amp;P500 performed better than the other 3 indices historically!</strong></em></p>
 <p><em>Visit the matplotlib website to discover more styles</em>:
 <a href="https://matplotlib.org/stable/gallery/style_sheets/style_sheets_reference.html">https://matplotlib.org/stable/gallery/style_sheets/style_sheets_reference.html</a></p>
 </div>
@@ -10111,7 +10112,7 @@ $$Normalized \ Price_{t} = \frac{Price_{t}}{Price_{t=0}}, \quad \quad for \: t \
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Measuring-Returns">Measuring Returns<a class="anchor-link" href="#Measuring-Returns">¶</a></h1><p>I need to find a way using pandas to calculate security returns. Specifically, I would like to apply the following formula for each row: 
+<h1 id="Measuring-Returns">Measuring Returns<a class="anchor-link" href="#Measuring-Returns">¶</a></h1><p>I need to find a way using pandas to calculate security returns. Specifically, I would like to apply the following formula for each row:
 $$Return_{t} = \frac{P_{t}-P_{t-1}}{P_{t-1}}$$</p>
 <p>Luckily, my dataset has the <em>prices arranged by date in an ascending order</em> (i.e., from oldest to the most recent date). So to apply the above formula, I will use one of the many useful functions provided by <code>pandas</code>, which is <code>.pct_change()</code>. This will calculate the percentage change of the value of each row from its previous value.</p>
 </div>
@@ -10613,21 +10614,26 @@ $$Return_{t} = \frac{P_{t}-P_{t-1}}{P_{t-1}}$$</p>
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h1 id="Descriptive-Statistics-and-Basic-Analysis-of-Excess-Returns">Descriptive Statistics and Basic Analysis of Excess Returns<a class="anchor-link" href="#Descriptive-Statistics-and-Basic-Analysis-of-Excess-Returns">¶</a></h1><p>Although the above graphs are useful for having a general idea on the return distribution, they are not that informative. First, they are raw returns, and such returns have occurred while the risk-free rate is changing from one month to another. If I plan to use historical returns to help me predict <em>future</em> returns, I would like examine the <em>excess</em> return probability distribution for each security. In the following section, I will estimate simple descriptive statistics; mean, median, standard deviation (i.e., risk), as well as alternative measures of risk, such as VaR, estimated shortfall, and downside risk on excess returns. I will then rank these alternative investment options (S&amp;P500, Corporate Bonds, Wilshire 5000, and Gold) using both the Sharpe ratio and the Sorinto ratio.</p>
 <p>So, the first step is to measure the <em>excess return</em> for each period:</p>
-$$Excess \: Return_{t} = R_{t} - R_{f}$$<p>This means I need to obtain data on historical T-bill prices so I can measure the historical <strong>risk-free rate ($R_{f}$)</strong>. T-bill <em>monthly</em> prices are obtained from the Federal Reserve Bank of St. Louis (FRED). The ID used by FRED for the 4-week-maturity treasury bill is <strong>TB4WK</strong>. If I am working with <em>annual</em> or <em>daily</em> security returns for example, I probably will need to download something different from FRED. Because the risk-free rate I need to measure must match the investment horizon I am analyzing. (<em>In my case it is monthly</em>)</p>
+<p>$$Excess \: Return_{t} = R_{t} - R_{f}$$</p>
+<p>This means I need to obtain data on historical T-bill prices so I can measure the historical <strong>risk-free rate ($R_{f}$)</strong>. T-bill <em>monthly</em> prices are obtained from the Federal Reserve Bank of St. Louis (FRED). The ID used by FRED for the 4-week-maturity treasury bill is <strong>TB4WK</strong>. If I am working with <em>annual</em> or <em>daily</em> security returns for example, I probably will need to download something different from FRED. Because the risk-free rate I need to measure must match the investment horizon I am analyzing. (<em>In my case it is monthly</em>)</p>
 <p>Recall the U.S. Federal government sells T-bill securities with different maturities; 4, 13, 26, and 52 weeks. Ideally, I would like to measure the return on a T-bill investment that has a maturity matching my investment horizon (Again, for my analysis its 1 month). So for example if I am examining the return of AMZN during the month of April 2016, I would like to compare the security's performance with a T-bill security that was issued by the U.S. government <em>at the beginning of April 2016 and has a maturity of 1 month</em>.</p>
 <p>But what if there are no T-bills sold at that specific day, or I do not have this information, or the government does not sell a T-bill matching my investment horizon? Say if my investment horizon is 1 week, what can I do?</p>
 <p>Well, to answer this question, remember that T-bills are money market instruments, which means they are financial assets with high liquidity sold and bought in the market on a daily basis. Thus, one can find the <em>approximate</em> return on a T-bill investment of 1 week by looking at the price of a T-bill today then checking its price after 1 week. The holding period return (HPR) for this investment can represent the 1-week risk-free rate:
 $$R_{f, t} = \frac{P_{1} - P_{0}}{P_{0}}$$</p>
-<p>Because T-bills have no risk, we know for certainty that at maturity the investor receives face value. If a 4-week T-bill was issued and sold today for $950, this means the security will pay the holder $1,000 in 4 weeks ($50 profit in 4 weeks). If the investor sells this T-bill after 3 weeks from today, and *assuming interest rates on new T-bills have not changed*, then logically speaking (and ignoring compounding for a moment) the seller should be entitled for only 3 weeks worth of profits. That is 3/4 of the $50 which is $37.5. Anyone buying this T-bill and holds it for an additional week should receive 1/4 of the $50 ($12.5). Thus, a buyer should be willing to pay ($1000 - $12.5 = $987.5) and would receive the face value after one week with certainty.</p>
+<p>Because T-bills have no risk, we know for certainty that at maturity the investor receives face value. If a 4-week T-bill was issued and sold today for $\$950$, this means the security will pay the holder $\$1,000$ in 4 weeks ($\$50$ profit in 4 weeks). If the investor sells this T-bill after 3 weeks from today, and <em>assuming interest rates on new T-bills have not changed</em>, then logically speaking (and ignoring compounding for a moment) the seller should be entitled for only 3 weeks worth of profits. That is 3/4 of the $\$50$ which is $\$37.50$. Anyone buying this T-bill and holds it for an additional week should receive 1/4 of the $\$50$ ($\$12.50$). Thus, a buyer should be willing to pay ($\$1000 - \$12.50 = \$987.5$) and would receive the face value after one week with certainty.</p>
 <p>To put it another way, if a 4-week T-bill has a return of 4%, then holding this security for 3 weeks should provide the investor (3/4 of the 4% = 3%) return. <strong>More importantly, because of market efficiency, any two short-term T-bills having different maturities should at least give an investor the same return when buying and holding them for the same period; because they are issued by the same borrower: the U.S. government</strong>.</p>
 <h2 id="Calculating-$R_%7Bf%7D$-from-T-bill-quotes">Calculating $R_{f}$ from T-bill quotes<a class="anchor-link" href="#Calculating-$R_%7Bf%7D$-from-T-bill-quotes">¶</a></h2><p>Remember, <em>The quotes we see on T-bills are annualized using the bank-discount method</em>, which has two main flaws: A) Assumes the year has 360 days, and B) Computes the yield as a fraction of face value instead of the current price. Thus, to find the actual risk-free rate, our first task is to transform the annual yield we get from a bank-discount method to an annual bond-equivalent yield (BD to BEY). This is done by first finding the price of the T-bill:</p>
-$$Price = Face \,\, Value \times \left[ 1- (R_{BD} \times \frac{n}{360}) \right] $$<p>Where $n$ is the number of days until the bill matures. Once we find the price, the Bond-Equivalent Yield (BEY) is basically:</p>
-$$R_{BEY} = \frac{Face \,\, Value - Price}{Price} \times \frac{365}{n}$$<p>Again, $n$ is the number of days until the T-bill I collected information about matures. Think of BEY as another version of the popular APR. Meaning the calculated return is in an annualized form and it ignores any compounding. Now, <em>the simplest way of finding the risk-free return that matches my investment horizon is to divide the BEY by the number of investment periods I have during the year</em>. For example, for monthly analysis, I divide the BEY by 12, for weekly 52, and for daily 365:</p>
-$$Monthly \,\, R_{f} = R_{BEY} \times \frac{1}{m} = \frac{R_{BEY}}{12}$$<p><em>If I want to be precise and assume compounding, then I apply the following formula for finding the effective risk-free rate</em>:</p>
-$$R_{eff.} = \left[ 1 + R_{BEY}  \right]^{\frac{1}{m}} -1$$<p>where $m$ is the divisor (monthly = 12, weekly = 52, yearly = 365 and so on...)</p>
+<p>$$Price = Face \,\, Value \times \left[ 1- (R_{BD} \times \frac{n}{360}) \right] $$</p>
+<p>Where $n$ is the number of days until the bill matures. Once we find the price, the Bond-Equivalent Yield (BEY) is basically:</p>
+<p>$$R_{BEY} = \frac{Face \,\, Value - Price}{Price} \times \frac{365}{n}$$</p>
+<p>Again, $n$ is the number of days until the T-bill I collected information about matures. Think of BEY as another version of the popular APR. Meaning the calculated return is in an annualized form and it ignores any compounding. Now, <em>the simplest way of finding the risk-free return that matches my investment horizon is to divide the BEY by the number of investment periods I have during the year</em>. For example, for monthly analysis, I divide the BEY by 12, for weekly 52, and for daily 365:</p>
+<p>$$Monthly \,\, R_{f} = R_{BEY} \times \frac{1}{m} = \frac{R_{BEY}}{12}$$</p>
+<p><em>If I want to be precise and assume compounding, then I apply the following formula for finding the effective risk-free rate</em>:</p>
+<p>$$R_{eff.} = \left[ 1 + R_{BEY}  \right]^{\frac{1}{m}} -1$$</p>
+<p>where $m$ is the divisor (monthly = 12, weekly = 52, yearly = 365 and so on...)</p>
 <p>Because my investment horizon is monthly, and there is data on 1-month maturity T-bills. I will simply use the convenient source: (<code>TB4WK</code>) and <em>no conversion is needed once I measure the price</em>. However, to check my conclusions above, I will also download the three-month T-bill data and transform them to monthly using the approach discussed above.</p>
-<p><em>Note: The 4-week maturity T-bill data offered by FRED starts in mid 2001. If you want to collect monthly rates for older periods, you need to use an alternative source. You can collect T-bill prices for the </em><em>three-month maturity bills</em>* (TB3MS) (starts at the end of 1938) and find the monthly return using the approach I discussed above.</p>
-<p>I will import another important package here: (<code>fredapi</code>). This package is made and managed by the <em>Federal Reserve Bank of St. Louis</em> in the United States. Using the package allows the user to download economic data directly from their server. It is basically a portal one can use to obtain any public data provided by the Fed. In order to use this feature, you are required to first open an account at their website, and then request an *<strong>API Key</strong>*. From my experience, the API-Key request is approved immediately.</p>
+<p>*Note: The 4-week maturity T-bill data offered by FRED starts in mid 2001. If you want to collect monthly rates for older periods, you need to use an alternative source. You can collect T-bill prices for the <strong>three-month maturity bills</strong> (TB3MS) (starts at the end of 1938) and find the monthly return using the approach I discussed above.</p>
+<p>I will import another important package here: (<code>fredapi</code>). This package is made and managed by the <em>Federal Reserve Bank of St. Louis</em> in the United States. Using the package allows the user to download economic data directly from their server. It is basically a portal one can use to obtain any public data provided by the Fed. In order to use this feature, you are required to first open an account at their website, and then request an <em><strong>API Key</strong></em>. From my experience, the API-Key request is approved immediately.</p>
 <p><em>Check this link for more info:</em> <a href="https://fred.stlouisfed.org/docs/api/api_key.html">https://fred.stlouisfed.org/docs/api/api_key.html</a></p>
 </div>
 </div>
@@ -10659,7 +10665,7 @@ $$R_{eff.} = \left[ 1 + R_{BEY}  \right]^{\frac{1}{m}} -1$$<p>where $m$ is the d
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># If you have installed fredapi, import the package </span>
-<span class="kn">from</span> <span class="nn">fredapi</span> <span class="kn">import</span> <span class="n">Fred</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fredapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">Fred</span>
 
 <span class="c1"># Don't forget to use your api-key after opening account with FRED</span>
 <span class="c1"># So then you can download any data from their server</span>
@@ -11243,7 +11249,7 @@ Name: 2017-01-01, dtype: float64
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>Notice how the difference between the two rates are minimal (The simple monthly $R_{f}$ for the 4-week maturity is 0.0414% and the 3-month maturity is 0.0431%), which means the 3-month is a good approximation for monthly risk-free rate after transforming it! You can check other periods to see whether the difference is big or small...</p>
-<h2 id="Merging-Two-Datasets-Using-Python">Merging Two Datasets Using Python<a class="anchor-link" href="#Merging-Two-Datasets-Using-Python">¶</a></h2><p><em>Notice I have two datasets: <code>index_returns</code> which includes </em><em>monthly</em>* index returns and <code>r_f_4wk</code> which includes the <strong>monthly</strong> risk-free rate. I would like to join them in one table now...*</p>
+<h2 id="Merging-Two-Datasets-Using-Python">Merging Two Datasets Using Python<a class="anchor-link" href="#Merging-Two-Datasets-Using-Python">¶</a></h2><p><em>Notice I have two datasets: <code>index_returns</code> which includes <strong>monthly</strong> index returns and <code>r_f_4wk</code> which includes the <strong>monthly</strong> risk-free rate. I would like to join them in one table now...</em></p>
 <p>When I have two or more tables and want to combine them, I can use a function in <code>pandas</code> called "merge". This function has so many configurations on how to join DataFrames. But since both of our tables (index_returns, r_f_4wk) have the same index name (Date), the matching process can be done quite easily (I just need to do the same transformation I did for the risk-free table dates; i.e., the date-time rows to be dates only in <code>index_returns</code>).</p>
 <p>When doing a merge, you can do "left", "right", "inner", and "outer". See the figure below:</p>
 <center> <img alt="matching" class="center" src="mERGE.png" width="600px"/> </center>
@@ -12473,7 +12479,7 @@ Name: AGG, dtype: float64</pre>
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Define a function that measures E.S.</span>
 <span class="c1"># This function requires 3 inputs to work</span>
 <span class="c1"># I will give them the names: return_data, column_name, percentile</span>
-<span class="k">def</span> <span class="nf">calc_es</span><span class="p">(</span><span class="n">return_data</span><span class="p">,</span> <span class="n">column_name</span><span class="p">,</span> <span class="n">percentile</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">calc_es</span><span class="p">(</span><span class="n">return_data</span><span class="p">,</span> <span class="n">column_name</span><span class="p">,</span> <span class="n">percentile</span><span class="p">):</span>
     <span class="c1"># Here is the way to give a small description for the function</span>
 <span class="w">    </span><span class="sd">'''</span>
 <span class="sd">    This function takes three arguments:</span>
@@ -12715,16 +12721,17 @@ Name: AGG, dtype: float64</pre>
 <li>The asymmetry of the distribution suggests we really should look at bad outcomes (below the mean) separately than the good outcomes</li>
 <li>Because an alternative to a risky portfolio is a risk-free investment, we also should focus on <em>negative excess returns</em>. That is, excess returns that are considered below the benchmark ($R_{f}$), even if these excess returns are considered good in the distribution itself</li>
 </ul>
-<p>A risk measure that addresses these issues is the Lower Partial Standard Deviation (LPSD). Named in the industry "Downside risk", it is computed like $\sigma$, but focuses on what we define as "bad" returns. Specifically, bad returns are negative deviations from the benchmark (this case its $R_{f}$) rather than negative deviations from the sample average. Thus, $\sigma_{LPSD}$ is the square root of the average squared deviation *<strong>conditional</strong>* on having a return below the benchmark.</p>
-$$LPSD = \sigma_{LPSD} = \sigma_{d} = \sqrt{\frac{1}{N-1} \sum_{t=1}^N \min[0, R_t - MAR]^{2}}$$<p>where</p>
+<p>A risk measure that addresses these issues is the Lower Partial Standard Deviation (LPSD). Named in the industry "Downside risk", it is computed like $\sigma$, but focuses on what we define as "bad" returns. Specifically, bad returns are negative deviations from the benchmark (this case its $R_{f}$) rather than negative deviations from the sample average. Thus, $\sigma_{LPSD}$ is the square root of the average squared deviation <strong>conditional</strong> on having a return below the benchmark.</p>
+<p>$$LPSD = \sigma_{LPSD} = \sigma_{d} = \sqrt{\frac{1}{N-1} \sum_{t=1}^N \min[0, R_t - MAR]^{2}}$$
+where</p>
 <ul>
 <li>$R_{i}$: Return at time $t$</li>
 <li>$MAR$: Minimum acceptable return (in our case here, it is $R_{f}$). It could be any benchmark, or for example a required return obtained from a pricing model</li>
 <li>$N$: Total number of observations in the sample</li>
 </ul>
 <p>A lower value of $\sigma_{LPSD}$ indicates that bad returns are generally clustered closer to the mean on the left tail, implying less potential for significant negative deviations.</p>
-<p><em>Notice this measure focuses on the </em><strong>average intensity of bad outcomes</strong>* but ignores the *<strong>frequency of bad outcomes</strong><em>; portfolios with the same average squared negative excess returns will have the same $\sigma_{LPSD}$ even with larger frequency of losses</em></p>
-<p>I will apply this measure ($\sigma_{LPSD}$) for our indices. To do so, I am going to create a temporary column that measures ($\min[0, R_t - MAR]$), then simply square it and divide it by ($N-1$). I will create the code for one column, then create a function so I can apply it through all indices using a loop</p>
+<p><em>Notice this measure focuses on the average intensity of bad outcomes but ignores the frequency of bad outcomes; portfolios with the same average squared negative excess returns will have the same $\sigma_{LPSD}$ even with larger frequency of losses</em></p>
+<p>I will apply this measure ($\sigma_{LPSD}$) for our indices. To do so, I am going to create a temporary column that measures ($\min[0, R_t - MAR]$), then simply square it and divide it by ($N-1$). I will create the code for one column, then create a function so I can apply it through all indices using a loop:</p>
 </div>
 </div>
 </div>
@@ -12824,7 +12831,7 @@ Name: AGG, Length: 243, dtype: float64
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># lets create a function from this series of operations:</span>
 
-<span class="k">def</span> <span class="nf">lpsd</span><span class="p">(</span><span class="n">column</span><span class="p">,</span> <span class="n">benchmark</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">lpsd</span><span class="p">(</span><span class="n">column</span><span class="p">,</span> <span class="n">benchmark</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    This function measures the lower partial standard deviation (downside deviation) of a column.</span>
 <span class="sd">    </span>
@@ -13033,7 +13040,8 @@ Name: AGG, Length: 243, dtype: float64
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="Sortino-Ratio">Sortino Ratio<a class="anchor-link" href="#Sortino-Ratio">¶</a></h2><p>Analysts who replace $\sigma$ with  $\sigma_{LPSD}$ typically replace the Sharpe ratio with the Sortino ratio. The Sortino ratio measures the return of an investment relative to its downside risk. It offers a more accurate view of risk-adjusted returns. A high ratio means the portfolio provides a substantial expected return relative to its estimated downside risk.</p>
 <p>Now that we have, $\sigma_{LPSD}$, I can measure the Sortino ratio for each investment using the formula:</p>
-$$ Sortino \,\, Ratio = \frac{E(R_{p}) - R_{f}}{\sigma_{LPSD}} $$<p>I will add it to the main descriptive table <code>index_desc_turned</code></p>
+<p>$$ Sortino \,\, Ratio = \frac{E(R_{p}) - R_{f}}{\sigma_{LPSD}} $$</p>
+<p>I will add it to the main descriptive table <code>index_desc_turned</code></p>
 </div>
 </div>
 </div>
@@ -13181,7 +13189,8 @@ $$ Sortino \,\, Ratio = \frac{E(R_{p}) - R_{f}}{\sigma_{LPSD}} $$<p>I will add i
 <h2 id="Relative-Frequency-of-Large,-Negative-3-Sigma-Returns">Relative Frequency of Large, Negative 3-Sigma Returns<a class="anchor-link" href="#Relative-Frequency-of-Large,-Negative-3-Sigma-Returns">¶</a></h2><p>This is another measure of downside risk by measuring the relative <em>frequency of large, negative returns</em> compared with frequencies that is in a normal distribution. Specifically, we compare the fraction of observations with returns 3 or more $\sigma$ below the mean to the relative frequency of $-3\sigma$ returns in the corresponding normal distribution.<br/>
 This measure can be helpful to examine the downside risk of an investment but in a different prospective; <em>here we focus on the occurrence of really bad returns as appose to the general average intensity of bad returns</em>.</p>
 <p>To measure the relative frequency, I need to transform returns or "standardize them" using the typical Z-score formula:</p>
-$$Standardized \: Excess \: Return = \frac{Excess \: Return - Mean}{\sigma}$$<p>When using this formula, an abnormal high return will have a positive value and an abnormal negative return will have a negative value. The value is basically explaining this observed return is how many standard deviations away from the sample mean.
+<p>$$Standardized \: Excess \: Return = \frac{Excess \: Return - Mean}{\sigma}$$
+When using this formula, an abnormal high return will have a positive value and an abnormal negative return will have a negative value. The value is basically explaining this observed return is how many standard deviations away from the sample mean.
 $$\textmd{Relative Frequency} = \frac{\textmd{No. of Bad Returns Observed in Data}}{\textmd{No. of Bad Returns in a Normally Distributed Data}}$$</p>
 </div>
 </div>
@@ -13245,7 +13254,7 @@ $$\textmd{Relative Frequency} = \frac{\textmd{No. of Bad Returns Observed in Dat
 <div class="jp-InputPrompt jp-InputArea-prompt">In [247]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">st</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
 
 <span class="n">z_scores</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">zscore</span><span class="p">(</span><span class="n">index_returns</span><span class="p">[</span><span class="s1">'SPY'</span><span class="p">])</span>
 <span class="n">bad_returns</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">z_scores</span><span class="p">[</span><span class="n">z_scores</span><span class="o">&lt;=-</span><span class="mi">3</span><span class="p">])</span>
@@ -13339,7 +13348,7 @@ $$\textmd{Relative Frequency} = \frac{\textmd{No. of Bad Returns Observed in Dat
 <div class="jp-InputPrompt jp-InputArea-prompt">In [249]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">relative_freq</span><span class="p">(</span><span class="n">column</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">relative_freq</span><span class="p">(</span><span class="n">column</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    This function measures the relative frequency of a column.</span>
 <span class="sd">    </span>
