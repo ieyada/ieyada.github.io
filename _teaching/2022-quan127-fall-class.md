@@ -4,8 +4,8 @@ collection: teaching
 type: "Undergraduate Course"
 permalink: /teaching/2022-quan127-fall-class
 venue: "KSU - Muzahmiyah Campus"
-unilink: "https://ksu.edu.sa/en/"
-linktext: "Go to King Saud University"
+unilink: "https://cba.ksu.edu.sa/en"
+linktext: "Go to College of Business at King Saud University"
 date: 2022-09-01
 location: "Muzahmiyah, Saudi Arabia"
 ---

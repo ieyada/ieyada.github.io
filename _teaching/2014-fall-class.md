@@ -3,7 +3,7 @@ title: "Business Statistics I (BUS205)"
 collection: teaching
 type: "Undergraduate Course"
 permalink: /teaching/2014-fall-class
-venue: "ISU, Scott College of Business"
+venue: "ISU"
 unilink: "https://www.indstate.edu/"
 linktext: "Go to Indiana State University"
 date: 2015-01-01
