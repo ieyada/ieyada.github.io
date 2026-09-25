@@ -9,10 +9,10 @@
 # Basic Site Settings
 locale                   : "en-US"
 site_theme               : "default"
-title                    : "Home"
+title                    : "Eyad Alhudhaif"
 title_separator          : "-"
 name                     : &name "Eyad Alhudhaif"
-description              : &description "personal description"
+description              : &description "Eyad Alhudhaif - Assistant Professor of Finance at King Saud University."
 url                      : https://ieyada.github.io # the base hostname & protocol for your site e.g. "https://[your GitHub username].github.io" or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "ieyada/ieyada.github.io"
@@ -38,7 +38,7 @@ author:
   impactstory      : # URL
   orcid            : "https://orcid.org/0000-0002-9447-712X"
   semantic         : # URL
-  pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
+  pubmed           : # URL
   researchgate     : # URL
   scopus           : # URL
 
@@ -144,7 +144,7 @@ yandex_site_verification :
 
 # Social Sharing
 twitter:
-  username               : &iEya_d
+  username               : "iEya_d"
 facebook:
   username               :
   app_id                 :
@@ -171,6 +171,7 @@ include:
   - _pages
   - files
 exclude:
+  - docs
   - "*.sublime-project"
   - "*.sublime-workspace"
   - .asset-cache

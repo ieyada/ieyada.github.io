@@ -6,14 +6,14 @@
       <nav id="site-nav" class="greedy-nav">
         <button><div class="navicon"></div></button>
         <ul class="visible-links">
-          <li class="masthead__menu-item masthead__menu-item--lg persist"><a href="{{ base_path }}/">{{ site.title }}</a></li>
+          <li class="masthead__menu-item masthead__menu-item--lg persist"><a href="{{ base_path }}/">Home</a></li>
           {% for link in site.data.navigation.main %}
-            {% if link.url contains 'pdf' %}
-              {% assign domain = '' %}
-              <li class="masthead__menu-item"><a href="{{ domain }}{{ link.url }}"target="_blank">{{ link.title }}</a></li>
+            {% if link.url contains '://' %}
+              <li class="masthead__menu-item"><a href="{{ link.url }}" target="_blank" rel="noopener noreferrer">{{ link.title }}</a></li>
+            {% elsif link.url contains '.pdf' %}
+              <li class="masthead__menu-item"><a href="{{ base_path }}{{ link.url }}" target="_blank" rel="noopener noreferrer">{{ link.title }}</a></li>
             {% else %}
-              {% assign domain = base_path %}
-              <li class="masthead__menu-item"><a href="{{ domain }}{{ link.url }}">{{ link.title }}</a></li>
+              <li class="masthead__menu-item"><a href="{{ base_path }}{{ link.url }}">{{ link.title }}</a></li>
             {% endif %}
           {% endfor %}
           <li id="theme-toggle" class="masthead__menu-item persist tail">

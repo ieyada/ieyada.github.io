@@ -24,8 +24,8 @@ main:
   - title: "Python Resources"
     url: /python/  
 
-  - title: "Data"
-    url: /datasets/  
+  # - title: "Data"
+  #   url: /datasets/  
   #- title: "Blog Posts"
   #  url: /year-archive/
     
